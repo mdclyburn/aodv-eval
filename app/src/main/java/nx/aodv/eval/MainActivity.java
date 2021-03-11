@@ -1,4 +1,4 @@
-package com.google.location.nearby.apps.connectedcrossroad;
+package nx.aodv.eval;
 
 import android.Manifest;
 import android.content.Context;
@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.connection.ConnectionsClient;
+import com.google.location.nearby.apps.connectedcrossroad.R;
 
 /**
  * Activity controlling the Message Board
