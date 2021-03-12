@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextSendMessage;
     private EditText editTextSendAddress;
     private EditText editTextSetAddress;
+    private EditText editTextRouteTable;
 
     @Override
     protected void onCreate(@Nullable Bundle bundle) {
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         editTextSendMessage = findViewById(R.id.editTextField);
         editTextSendAddress = findViewById(R.id.editAddressField);
         editTextSetAddress = findViewById(R.id.setAddressField);
+        editTextRouteTable = findViewById(R.id.editTextRouteTable);
 
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +94,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         connectionsClient = Nearby.getConnectionsClient(this);
-        network = new AODVNetwork(connectionsClient, tvNumConnected, tvLatestRx);
+        network = new AODVNetwork(connectionsClient,
+                tvNumConnected,
+                tvLatestRx,
+                editTextRouteTable);
 
         tvName.setText(String.format("Device name: %s", network.getAddress()));
 

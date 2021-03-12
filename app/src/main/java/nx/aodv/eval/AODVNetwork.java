@@ -1,6 +1,7 @@
 package nx.aodv.eval;
 
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -93,6 +94,8 @@ class AODVNetwork {
     private final TextView lastMessageRx;
     //Text view to display number of connected nodes to user
     private final TextView numConnectedText;
+    // Edit text to show the routing table.
+    private final EditText etRouteTable;
 
     //sockets for communicating with MK6s over UDP
     private DatagramSocket listenerSocket;
@@ -113,7 +116,10 @@ class AODVNetwork {
 
     private boolean searching = false;
 
-    AODVNetwork(ConnectionsClient connectionsClient, TextView numConnectedText, TextView lastMessageRx) {
+    AODVNetwork(ConnectionsClient connectionsClient,
+                TextView numConnectedText,
+                TextView lastMessageRx,
+                EditText etRouteTable) {
 
         this.self = new AODVRoute();
         this.self.address = DEFAULT_NAME;
@@ -127,6 +133,7 @@ class AODVNetwork {
         this.connectionsClient = connectionsClient;
         this.lastMessageRx = lastMessageRx;
         this.numConnectedText = numConnectedText;
+        this.etRouteTable = etRouteTable;
 
         Runnable helloTxRunnable = new Runnable() {
             @Override
@@ -597,6 +604,7 @@ class AODVNetwork {
             srcRoute.hopCnt = (byte) (msg.header.hopCnt + 1);
             srcRoute.timeout = System.currentTimeMillis() + ROUTE_TIMEOUT;
             routeTable.put(srcAddr, srcRoute);
+            updateRouteTableDisplay();
         }
         //check bcast seq num for route freshness and to prevent loops
         if (msg.header.bcastSeqNum <= srcRoute.bcastSeqNum) {
@@ -1174,4 +1182,10 @@ class AODVNetwork {
         }
     };
 
+    private void updateRouteTableDisplay() {
+        String displayText = "";
+        for (Map.Entry<Short, AODVRoute> e : routeTable.entrySet()) {
+            displayText += e.getKey().toString() + " -> " + e.getValue().nextHopId + "\n";
+        }
+    }
 }

@@ -12,4 +12,5 @@
   <string name="default_address">0</string>
   <string name="set_address_button">Set Address</string>
   <string name="devices_in_network_1">Devices in network: 1</string>
+    <string name="label_route_table">Routing table</string>
 </resources>

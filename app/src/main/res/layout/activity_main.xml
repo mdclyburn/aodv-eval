@@ -16,17 +16,6 @@
         app:layout_constraintTop_toBottomOf="@+id/numConnectionsText" />
 
     <TextView
-        android:id="@+id/lastMessageTx"
-        android:layout_width="0dp"
-        android:layout_height="22dp"
-        android:text="@string/no_messages_yet"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/lastMessageRx"
         android:layout_width="0dp"
         android:layout_height="22dp"
@@ -34,8 +23,23 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@id/lastMessageTx"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.899" />
+
+    <TextView
+        android:id="@+id/lastMessageTx"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:text="@string/no_messages_yet"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.717" />
 
     <TextView
         android:id="@+id/numConnectionsText"
@@ -96,5 +100,31 @@
         android:text="@string/set_address_button"
         app:layout_constraintBottom_toTopOf="@+id/editAddressField"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRouteTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_route_table"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deviceName" />
+
+    <EditText
+        android:id="@+id/editTextRouteTable"
+        android:layout_width="390dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="4dp"
+        android:editable="false"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRouteTable"
+        android:importantForAutofill="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
