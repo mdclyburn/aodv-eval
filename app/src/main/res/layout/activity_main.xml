@@ -49,11 +49,13 @@
         android:id="@+id/editTextField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
         android:hint="@string/enter_message_here"
         android:importantForAutofill="no"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/setAddressButton"
+        app:layout_constraintBottom_toTopOf="@+id/sendMessageButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -69,13 +71,13 @@
 
     <EditText
         android:id="@+id/setAddressField"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="254dp"
+        android:layout_height="41dp"
         android:hint="@string/set_address_field"
         android:importantForAutofill="no"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editAddressField"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/setAddressButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -89,13 +91,10 @@
 
     <Button
         android:id="@+id/setAddressButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_width="152dp"
+        android:layout_height="47dp"
         android:text="@string/set_address_button"
-        app:layout_constraintBottom_toTopOf="@+id/sendMessageButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/editAddressField"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
