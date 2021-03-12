@@ -49,9 +49,9 @@
         android:id="@+id/editTextField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/enter_message_here"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:text="@string/enter_message_here"
         app:layout_constraintBottom_toTopOf="@+id/setAddressButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -60,9 +60,9 @@
         android:id="@+id/editAddressField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/send_address"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:text="@string/send_address"
         app:layout_constraintBottom_toTopOf="@+id/editTextField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -71,9 +71,9 @@
         android:id="@+id/setAddressField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/set_address_field"
         android:importantForAutofill="no"
         android:inputType="text"
-        android:text="@string/set_address_field"
         app:layout_constraintBottom_toTopOf="@+id/editAddressField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -91,9 +91,11 @@
         android:id="@+id/setAddressButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/set_address_button"
         app:layout_constraintBottom_toTopOf="@+id/sendMessageButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
