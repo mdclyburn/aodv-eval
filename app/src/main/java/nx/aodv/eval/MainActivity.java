@@ -53,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
     private Button sendMessageButton;
     private Button setAddressButton;
 
-    private TextView numConnectedText;
-    private TextView deviceNameText;
-    private TextView lastMessageTx;
-    private TextView lastMessageRx;
+    private TextView tvNumConnected;
+    private TextView tvName;
+    private TextView tvLatestTx;
+    private TextView tvLatestRx;
 
-    private EditText sendMessageText;
-    private EditText sendAddressText;
-    private EditText setAddressText;
+    private EditText editTextSendMessage;
+    private EditText editTextSendAddress;
+    private EditText editTextSetAddress;
 
     @Override
     protected void onCreate(@Nullable Bundle bundle) {
@@ -71,41 +71,41 @@ public class MainActivity extends AppCompatActivity {
         sendMessageButton = findViewById(R.id.sendMessageButton);
         setAddressButton = findViewById(R.id.setAddressButton);
 
-        deviceNameText = findViewById(R.id.deviceName);
-        numConnectedText = findViewById(R.id.numConnectionsText);
-        lastMessageTx = findViewById(R.id.lastMessageTx);
-        lastMessageRx = findViewById(R.id.lastMessageRx);
+        tvName = findViewById(R.id.deviceName);
+        tvNumConnected = findViewById(R.id.numConnectionsText);
+        tvLatestTx = findViewById(R.id.lastMessageTx);
+        tvLatestRx = findViewById(R.id.lastMessageRx);
 
-        sendMessageText = findViewById(R.id.editTextField);
-        sendAddressText = findViewById(R.id.editAddressField);
-        setAddressText = findViewById(R.id.setAddressField);
+        editTextSendMessage = findViewById(R.id.editTextField);
+        editTextSendAddress = findViewById(R.id.editAddressField);
+        editTextSetAddress = findViewById(R.id.setAddressField);
 
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = sendAddressText.getText().toString();
+                String name = editTextSendAddress.getText().toString();
                 short address = strToShort(name);
                 if (address != 0) {
-                    sendMessage(address, sendMessageText.getText().toString());
+                    sendMessage(address, editTextSendMessage.getText().toString());
                 }
             }
         });
 
         connectionsClient = Nearby.getConnectionsClient(this);
-        network = new AODVNetwork(connectionsClient, numConnectedText, lastMessageRx);
+        network = new AODVNetwork(connectionsClient, tvNumConnected, tvLatestRx);
 
-        deviceNameText.setText(String.format("Device name: %s", network.getAddress()));
+        tvName.setText(String.format("Device name: %s", network.getAddress()));
 
         setAddressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = setAddressText.getText().toString().trim();
+                String name = editTextSetAddress.getText().toString().trim();
                 short address = strToShort(name);
                 if (address != 0) {
                     network.setAddress(address);
-                    deviceNameText.setText(String.format("Device name: %s", address));
+                    tvName.setText(String.format("Device name: %s", address));
                     //disable the button and field so they can't be set again
-                    setAddressText.setEnabled(false);
+                    editTextSetAddress.setEnabled(false);
                     setAddressButton.setEnabled(false);
                     //start network operations after address is set
                     network.start();
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
     private void sendMessage(short id, String msg) {
         network.sendMessage(id, msg);
         Log.d(TAG, "sendMessage: Sent message");
-        lastMessageTx.setText(String.format("%s: %s", id, msg));
+        tvLatestTx.setText(String.format("%s: %s", id, msg));
     }
 
     //Ensure that string address is convertible to short address
