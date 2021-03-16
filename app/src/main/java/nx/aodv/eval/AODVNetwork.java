@@ -94,8 +94,8 @@ class AODVNetwork {
     private final TextView lastMessageRx;
     //Text view to display number of connected nodes to user
     private final TextView numConnectedText;
-    // Edit text to show the routing table.
-    private final EditText etRouteTable;
+    // Text view to show the routing table.
+    private final TextView tvRouteTable;
 
     //sockets for communicating with MK6s over UDP
     private DatagramSocket listenerSocket;
@@ -119,7 +119,7 @@ class AODVNetwork {
     AODVNetwork(ConnectionsClient connectionsClient,
                 TextView numConnectedText,
                 TextView lastMessageRx,
-                EditText etRouteTable) {
+                TextView tvRouteTable) {
 
         this.self = new AODVRoute();
         this.self.address = DEFAULT_NAME;
@@ -133,7 +133,7 @@ class AODVNetwork {
         this.connectionsClient = connectionsClient;
         this.lastMessageRx = lastMessageRx;
         this.numConnectedText = numConnectedText;
-        this.etRouteTable = etRouteTable;
+        this.tvRouteTable = tvRouteTable;
 
         Runnable helloTxRunnable = new Runnable() {
             @Override
@@ -492,6 +492,11 @@ class AODVNetwork {
     }
 
     private void handleAODVMessage(AODVMessage msg) {
+        if (this.ccNeighborsTable.containsKey(msg.header.sendId)) {
+            this.ccNeighborsTable.get(msg.header.sendId).address =
+            msg.header.srcAddr;
+        }
+
         switch (msg.header.type) {
             case HELO:
                 handleHELLO(msg);
@@ -649,6 +654,7 @@ class AODVNetwork {
             srcRoute.seqNum = msg.header.srcSeqNum;
             srcRoute.hopCnt = (byte) (msg.header.hopCnt - 1);
             routeTable.put(srcAddr, srcRoute);
+            updateRouteTableDisplay();
         }
         srcRoute.timeout = System.currentTimeMillis() + ROUTE_TIMEOUT;
         AODVRoute destRoute = getRouteByAddress(destAddr);
@@ -1016,6 +1022,28 @@ class AODVNetwork {
         String display = String.format(Locale.US, "Devices in local network: %d", localSize);
         numConnectedText.setText(display);
         Log.d(TAG, "updateDevicesConnected: " + display);
+        updateRouteTableDisplay();
+    }
+
+    private void updateRouteTableDisplay() {
+        String displayText = "Next Hops:\n";
+        for (Map.Entry<Short, AODVRoute> e : routeTable.entrySet()) {
+            displayText += e.getKey().toString() + " -> " + e.getValue().nextHopId + "\n";
+        }
+
+        synchronized (routeTableLock) {
+            displayText += "\nLocals (UDP):\n";
+            for (Map.Entry<Short, AODVRoute> e : udpNeighborsTable.entrySet()) {
+                displayText += e.getKey().toString() + " -> " + e.getValue().nextHopId + "\n";
+            }
+
+            displayText += "\nLocals (CC):\n";
+            for (Map.Entry<String, AODVRoute> e : ccNeighborsTable.entrySet()) {
+                displayText += e.getKey() + "\n";
+            }
+        }
+
+        this.tvRouteTable.setText(displayText);
     }
 
     private void updateLastMessageRx(short address, String message) {
@@ -1181,11 +1209,4 @@ class AODVNetwork {
             }
         }
     };
-
-    private void updateRouteTableDisplay() {
-        String displayText = "";
-        for (Map.Entry<Short, AODVRoute> e : routeTable.entrySet()) {
-            displayText += e.getKey().toString() + " -> " + e.getValue().nextHopId + "\n";
-        }
-    }
 }

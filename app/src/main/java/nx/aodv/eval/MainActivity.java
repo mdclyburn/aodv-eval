@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvName;
     private TextView tvLatestTx;
     private TextView tvLatestRx;
+    private TextView tvRouteTable;
 
     private EditText editTextSendMessage;
     private EditText editTextSendAddress;
     private EditText editTextSetAddress;
-    private EditText editTextRouteTable;
 
     @Override
     protected void onCreate(@Nullable Bundle bundle) {
@@ -76,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
         tvNumConnected = findViewById(R.id.numConnectionsText);
         tvLatestTx = findViewById(R.id.lastMessageTx);
         tvLatestRx = findViewById(R.id.lastMessageRx);
+        tvRouteTable = findViewById(R.id.textViewRouteTable);
 
         editTextSendMessage = findViewById(R.id.editTextField);
         editTextSendAddress = findViewById(R.id.editAddressField);
         editTextSetAddress = findViewById(R.id.setAddressField);
-        editTextRouteTable = findViewById(R.id.editTextRouteTable);
 
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         network = new AODVNetwork(connectionsClient,
                 tvNumConnected,
                 tvLatestRx,
-                editTextRouteTable);
+                tvRouteTable);
 
         tvName.setText(String.format("Device name: %s", network.getAddress()));
 

@@ -112,19 +112,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deviceName" />
 
-    <EditText
-        android:id="@+id/editTextRouteTable"
-        android:layout_width="390dp"
-        android:layout_height="113dp"
-        android:layout_marginTop="4dp"
-        android:editable="false"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
+    <TextView
+        android:id="@+id/routeTabletextView"
+        android:layout_width="393dp"
+        android:layout_height="106dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRouteTable"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewRouteTable" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
