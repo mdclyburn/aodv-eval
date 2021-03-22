@@ -120,23 +120,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRouteTable" />
 
-    <TextView
-        android:id="@+id/payloadRxLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Payload RX"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/routeTabletextView" />
-
-    <TextView
-        android:id="@+id/payloadRxTextView"
-        android:layout_width="186dp"
-        android:layout_height="19dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toEndOf="@+id/payloadRxLabel"
-        tools:layout_editor_absoluteY="172dp" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

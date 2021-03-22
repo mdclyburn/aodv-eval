@@ -99,8 +99,6 @@ class AODVNetwork {
     private final TextView numConnectedText;
     // Text view to show the routing table.
     private final TextView tvRouteTable;
-    // Text view to show number of bytes received.
-    private final TextView tvBytesRx;
 
     //sockets for communicating with MK6s over UDP
     private DatagramSocket listenerSocket;
@@ -124,8 +122,7 @@ class AODVNetwork {
     AODVNetwork(ConnectionsClient connectionsClient,
                 TextView numConnectedText,
                 TextView lastMessageRx,
-                TextView tvRouteTable,
-                TextView tvBytesRx) {
+                TextView tvRouteTable) {
 
         this.totalPayloadRx = this.totalPayloadTx = 0;
         this.self = new AODVRoute();
@@ -141,7 +138,6 @@ class AODVNetwork {
         this.lastMessageRx = lastMessageRx;
         this.numConnectedText = numConnectedText;
         this.tvRouteTable = tvRouteTable;
-        this.tvBytesRx = tvBytesRx;
 
         Runnable helloTxRunnable = new Runnable() {
             @Override
@@ -298,6 +294,7 @@ class AODVNetwork {
                         if (msg != null) {
                             synchronized (routeTableLock) {
                                 handleAODVMessage(msg);
+                                updateTotals();
                             }
                         }
                     } catch (InterruptedException e) {
@@ -419,6 +416,8 @@ class AODVNetwork {
                 broadcastMessage(rreq);
             }
         }
+
+        updateTotals();
     }
 
     private void sendMessage(AODVMessage msg) {
@@ -435,12 +434,14 @@ class AODVNetwork {
         msg.header.sendAddr = self.address;
         broadcastCCMessage(msg);
         udpTxQueue.add(msg);
+        this.totalPayloadTx += msg.header.length;
     }
 
     private synchronized void sendCCMessage(AODVMessage msg) {
         try {
             byte[] bytes = SerializationHelper.serialize(msg);
             Payload payload = Payload.fromBytes(bytes);
+            totalPayloadTx += msg.header.length;
             connectionsClient.sendPayload(msg.header.nextId, payload);
         } catch (IOException e) {
             e.printStackTrace();
@@ -452,6 +453,7 @@ class AODVNetwork {
             for (AODVRoute neighbor : ccNeighborsTable.values()) {
                 msg.header.nextAddr = neighbor.address;
                 msg.header.nextId = neighbor.nextHopId;
+                totalPayloadTx += msg.header.length;
                 sendCCMessage(msg);
             }
         }
@@ -479,7 +481,6 @@ class AODVNetwork {
         }
 
         this.totalPayloadRx += msg.header.length;
-        updateTotals();
 
         switch (msg.header.type) {
             case HELO:
@@ -978,6 +979,9 @@ class AODVNetwork {
     }
 
     private void updateTotals() {
+        Log.v("data", "Payload RX: " + this.totalPayloadRx);
+        Log.v("data", "Payload TX: " + this.totalPayloadTx);
+
         return;
     }
 
