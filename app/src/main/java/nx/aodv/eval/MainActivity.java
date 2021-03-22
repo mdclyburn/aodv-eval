@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvLatestTx;
     private TextView tvLatestRx;
     private TextView tvRouteTable;
+    private TextView tvBytesRx;
 
     private EditText editTextSendMessage;
     private EditText editTextSendAddress;
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         tvLatestTx = findViewById(R.id.lastMessageTx);
         tvLatestRx = findViewById(R.id.lastMessageRx);
         tvRouteTable = findViewById(R.id.textViewRouteTable);
+        tvBytesRx = findViewById(R.id.payloadRxTextView);
 
         editTextSendMessage = findViewById(R.id.editTextField);
         editTextSendAddress = findViewById(R.id.editAddressField);
@@ -97,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
         network = new AODVNetwork(connectionsClient,
                 tvNumConnected,
                 tvLatestRx,
-                tvRouteTable);
+                tvRouteTable,
+                tvBytesRx);
 
         tvName.setText(String.format("Device name: %s", network.getAddress()));
 

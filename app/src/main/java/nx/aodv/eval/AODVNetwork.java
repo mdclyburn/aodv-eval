@@ -62,6 +62,9 @@ class AODVNetwork {
     private static final long QUEUE_INTERVAL = 500;
     private static final long QUEUE_POLLING_TIMEOUT = 5000;
 
+    private int totalPayloadTx;
+    private int totalPayloadRx;
+
     //self routing info
     private final AODVRoute self;
 
@@ -96,6 +99,8 @@ class AODVNetwork {
     private final TextView numConnectedText;
     // Text view to show the routing table.
     private final TextView tvRouteTable;
+    // Text view to show number of bytes received.
+    private final TextView tvBytesRx;
 
     //sockets for communicating with MK6s over UDP
     private DatagramSocket listenerSocket;
@@ -119,8 +124,10 @@ class AODVNetwork {
     AODVNetwork(ConnectionsClient connectionsClient,
                 TextView numConnectedText,
                 TextView lastMessageRx,
-                TextView tvRouteTable) {
+                TextView tvRouteTable,
+                TextView tvBytesRx) {
 
+        this.totalPayloadRx = this.totalPayloadTx = 0;
         this.self = new AODVRoute();
         this.self.address = DEFAULT_NAME;
         this.routeTable = Collections.synchronizedMap(new HashMap<Short, AODVRoute>());
@@ -134,6 +141,7 @@ class AODVNetwork {
         this.lastMessageRx = lastMessageRx;
         this.numConnectedText = numConnectedText;
         this.tvRouteTable = tvRouteTable;
+        this.tvBytesRx = tvBytesRx;
 
         Runnable helloTxRunnable = new Runnable() {
             @Override
@@ -496,6 +504,9 @@ class AODVNetwork {
             this.ccNeighborsTable.get(msg.header.sendId).address =
             msg.header.srcAddr;
         }
+
+        this.totalPayloadRx += msg.header.length;
+        updateTotals();
 
         switch (msg.header.type) {
             case HELO:
@@ -1050,6 +1061,10 @@ class AODVNetwork {
         String display = String.format("%s: %s", address, message);
         lastMessageRx.setText(display);
         Log.d(TAG, "updateLastMessageRx: " + display);
+    }
+
+    private void updateTotals() {
+        return;
     }
 
     private final EndpointDiscoveryCallback endpointDiscoveryCallback = new EndpointDiscoveryCallback()
