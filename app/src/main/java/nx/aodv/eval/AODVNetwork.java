@@ -61,8 +61,11 @@ class AODVNetwork {
     private static final long QUEUE_INTERVAL = 500;
     private static final long QUEUE_POLLING_TIMEOUT = 5000;
 
+    // Data RX/TX totals; payload-only and entire packet data.
     private int totalPayloadTx;
     private int totalPayloadRx;
+    private int totalTx;
+    private int totalRx;
 
     //self routing info
     private final AODVRoute self;
@@ -124,6 +127,8 @@ class AODVNetwork {
                 TextView tvRouteTable) {
 
         this.totalPayloadRx = this.totalPayloadTx = 0;
+        this.totalRx = this.totalTx = 0;
+
         this.self = new AODVRoute();
         this.self.address = DEFAULT_NAME;
         this.routeTable = Collections.synchronizedMap(new HashMap<Short, AODVRoute>());
@@ -441,6 +446,7 @@ class AODVNetwork {
         try {
             byte[] bytes = SerializationHelper.serialize(msg);
             Payload payload = Payload.fromBytes(bytes);
+            totalTx += bytes.length;
             totalPayloadTx += msg.header.length;
             connectionsClient.sendPayload(msg.header.nextId, payload);
         } catch (IOException e) {
@@ -981,6 +987,8 @@ class AODVNetwork {
     private void showTrafficTotals() {
         Log.v("data", "Payload RX: " + this.totalPayloadRx);
         Log.v("data", "Payload TX: " + this.totalPayloadTx);
+        Log.v("data", "Total RX: " + this.totalRx);
+        Log.v("data", "Total TX: " + this.totalTx);
 
         return;
     }
@@ -1117,8 +1125,10 @@ class AODVNetwork {
          */
         @Override
         public void onPayloadReceived(@NonNull String endpointId, Payload payload) {
+            byte[] payloadBytes = payload.asBytes();
+            totalRx += payloadBytes.length;
             try {
-                Object deserialized = SerializationHelper.deserialize(payload.asBytes());
+                Object deserialized = SerializationHelper.deserialize(payloadBytes);
                 if (deserialized instanceof AODVMessage) {
                     AODVMessage msg = (AODVMessage) deserialized;
                     //this is the only place we can set the sender Id, which is needed for some control
