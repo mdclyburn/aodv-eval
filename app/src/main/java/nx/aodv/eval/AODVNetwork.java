@@ -1,7 +1,6 @@
 package nx.aodv.eval;
 
 import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -294,7 +293,7 @@ class AODVNetwork {
                         if (msg != null) {
                             synchronized (routeTableLock) {
                                 handleAODVMessage(msg);
-                                updateTotals();
+                                showTrafficTotals();
                             }
                         }
                     } catch (InterruptedException e) {
@@ -417,7 +416,7 @@ class AODVNetwork {
             }
         }
 
-        updateTotals();
+        showTrafficTotals();
     }
 
     private void sendMessage(AODVMessage msg) {
@@ -428,6 +427,7 @@ class AODVNetwork {
         } else {
             udpTxQueue.add(msg);
         }
+        this.totalPayloadTx += msg.header.length;
     }
 
     private void broadcastMessage(AODVMessage msg) {
@@ -978,7 +978,7 @@ class AODVNetwork {
         lastMessageRx.setText(display);
     }
 
-    private void updateTotals() {
+    private void showTrafficTotals() {
         Log.v("data", "Payload RX: " + this.totalPayloadRx);
         Log.v("data", "Payload TX: " + this.totalPayloadTx);
 
