@@ -22,6 +22,8 @@ import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.connection.ConnectionsClient;
 import com.google.location.nearby.apps.connectedcrossroad.R;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Activity controlling the Message Board
  */
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button sendMessageButton;
     private Button setAddressButton;
+    private Button sendBurstButton;
 
     private TextView tvNumConnected;
     private TextView tvName;
@@ -72,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         sendMessageButton = findViewById(R.id.sendMessageButton);
         setAddressButton = findViewById(R.id.setAddressButton);
+        sendBurstButton = findViewById(R.id.sendBurstButton);
 
         tvName = findViewById(R.id.deviceName);
         tvNumConnected = findViewById(R.id.numConnectionsText);
@@ -115,6 +119,20 @@ public class MainActivity extends AppCompatActivity {
                     setAddressButton.setEnabled(false);
                     //start network operations after address is set
                     network.start();
+                }
+            }
+        });
+
+        sendBurstButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = editTextSendAddress.getText().toString();
+                short address = strToShort(name);
+                if (address != 0) {
+                    for (int x = 0; x < 10; x++) {
+                        sendMessage(address, editTextSendMessage.getText().toString());
+                        TimeUnit.SECONDS.sleep(1);
+                    }
                 }
             }
         });
