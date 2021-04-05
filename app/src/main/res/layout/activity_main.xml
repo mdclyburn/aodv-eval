@@ -120,4 +120,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRouteTable" />
 
+    <Button
+        android:id="@+id/sendBurstButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send burst"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="397dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

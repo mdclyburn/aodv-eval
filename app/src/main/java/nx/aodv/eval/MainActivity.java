@@ -131,7 +131,12 @@ public class MainActivity extends AppCompatActivity {
                 if (address != 0) {
                     for (int x = 0; x < 10; x++) {
                         sendMessage(address, editTextSendMessage.getText().toString());
-                        TimeUnit.SECONDS.sleep(1);
+
+                        try {
+                            TimeUnit.SECONDS.sleep(1);
+                        } catch (InterruptedException interrupted) {
+                            Log.e("perf", "Failed to sleep for burst send testing.");
+                        }
                     }
                 }
             }
