@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        //this.setAddressClicked();
     }
 
     @Override
@@ -217,4 +217,16 @@ public class MainActivity extends AppCompatActivity {
         return num;
     }
 
+    private void setAddressClicked() {
+        short address = 3;
+        if (address != 0) {
+            network.setAddress(address);
+            tvName.setText(String.format("Device name: %s", address));
+            //disable the button and field so they can't be set again
+            editTextSetAddress.setEnabled(false);
+            setAddressButton.setEnabled(false);
+            //start network operations after address is set
+            network.start();
+        }
+    }
 }

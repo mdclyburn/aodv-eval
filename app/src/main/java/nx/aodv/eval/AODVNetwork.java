@@ -217,6 +217,7 @@ class AODVNetwork {
                             //remove expired routes
                             for (AODVRoute route : routeTable.values()) {
                                 if (route.timeout < timeMillis) {
+                                    Log.v("perf", "Route to " + route.address + " (" + route.id + ") expired.");
                                     removeRouteByAddress(route.address);
                                 }
                             }
@@ -310,6 +311,7 @@ class AODVNetwork {
         };
         this.handleAODVThread = new Thread(handleAODVRunnable);
 
+        Log.v("perf", "AODV networking started.");
     }
 
     void start() {
@@ -333,6 +335,7 @@ class AODVNetwork {
         stopDiscovery();
         stopAdvertising();
         connectionsClient.stopAllEndpoints();
+        Log.v("perf", "Networking stopped");
     }
 
     void startDiscovery() {
@@ -519,6 +522,8 @@ class AODVNetwork {
             //we can only know neighbor Addr from hello messages
             if (neighbor != null) {
                 if (!neighborAddressToId.containsKey(sendAddr)) {
+                    Log.v("perf", "Discovered neighbor: " + sendAddr + " (" + sendId + ")");
+                    Log.v("perf", "Bytes sent: " + totalTx + ", received: " + totalRx);
                     neighborAddressToId.put(sendAddr, sendId);
                 }
                 neighbor.address = msg.header.srcAddr;
@@ -1108,6 +1113,7 @@ class AODVNetwork {
                     Log.d(TAG, "onDisconnected: Failed to remove neighbor");
                 }
             }
+            Log.v("perf", "Disconnected from " + endpointId);
             updateDevicesConnected();
         }
     };
