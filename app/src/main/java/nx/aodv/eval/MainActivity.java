@@ -1,7 +1,10 @@
 package nx.aodv.eval;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -12,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.util.Log;
 import android.view.View;
@@ -71,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextSendAddress;
     private EditText editTextSetAddress;
 
+    private String datasetPath;
+    private String[] txDatasets;
+    private AlertDialog datasetPicker;
+
     @Override
     protected void onCreate(@Nullable Bundle bundle) {
 
@@ -111,17 +119,6 @@ public class MainActivity extends AppCompatActivity {
 
         tvName.setText(String.format("Device name: %s", network.getAddress()));
 
-        AssetManager assetManager = Resources.getSystem().getAssets();
-        try {
-            String[] assets = assetManager.list("");
-            Log.v("perf", "Have " + assets.length + " assets.");
-            for (String asset : assets) {
-                Log.v("perf", "Found asset: " + asset);
-            }
-        } catch (IOException e) {
-            Log.e("perf", "Could not list assets.");
-        }
-
         setAddressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,6 +155,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //this.setAddressClicked();
+
+        try {
+            txDatasets = this.getAssets().list("tx-data/");
+            datasetPath = null;
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder
+                    .setTitle("Pick dataset")
+                    .setItems(txDatasets, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int index) {
+                            Log.v("perf", "User chose item " + index + ": " + txDatasets[index]);
+                            datasetPath = txDatasets[index];
+                        }
+                    });
+            this.datasetPicker = alertDialogBuilder.create();
+
+            this.loadDataButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    datasetPicker.show();
+                }
+            });
+        } catch (IOException e) {
+            Log.e("perf", "Could not list assets.");
+            findViewById(R.id.buttonLoadData)
+                    .setEnabled(false);
+        }
     }
 
     @Override
