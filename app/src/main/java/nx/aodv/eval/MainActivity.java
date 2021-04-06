@@ -3,6 +3,8 @@ package nx.aodv.eval;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.CallSuper;
@@ -22,6 +24,7 @@ import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.connection.ConnectionsClient;
 import com.google.location.nearby.apps.connectedcrossroad.R;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private Button sendMessageButton;
     private Button setAddressButton;
     private Button sendBurstButton;
+    private Button loadDataButton;
 
     private TextView tvNumConnected;
     private TextView tvName;
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         sendMessageButton = findViewById(R.id.sendMessageButton);
         setAddressButton = findViewById(R.id.setAddressButton);
         sendBurstButton = findViewById(R.id.sendBurstButton);
+        loadDataButton = findViewById(R.id.buttonLoadData);
 
         tvName = findViewById(R.id.deviceName);
         tvNumConnected = findViewById(R.id.numConnectionsText);
@@ -105,6 +110,17 @@ public class MainActivity extends AppCompatActivity {
                 tvRouteTable);
 
         tvName.setText(String.format("Device name: %s", network.getAddress()));
+
+        AssetManager assetManager = Resources.getSystem().getAssets();
+        try {
+            String[] assets = assetManager.list("");
+            Log.v("perf", "Have " + assets.length + " assets.");
+            for (String asset : assets) {
+                Log.v("perf", "Found asset: " + asset);
+            }
+        } catch (IOException e) {
+            Log.e("perf", "Could not list assets.");
+        }
 
         setAddressButton.setOnClickListener(new View.OnClickListener() {
             @Override
