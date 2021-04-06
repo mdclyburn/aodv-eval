@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvLatestRx;
     private TextView tvRouteTable;
     private TextView tvBytesRx;
+    private TextView tvLoadedData;
 
     private EditText editTextSendMessage;
     private EditText editTextSendAddress;
@@ -156,6 +157,8 @@ public class MainActivity extends AppCompatActivity {
         });
         //this.setAddressClicked();
 
+        this.tvLoadedData = findViewById(R.id.loadedDataTextView);
+        this.tvLoadedData.setText("(No dataset selected)");
         try {
             txDatasets = this.getAssets().list("tx-data/");
             datasetPath = null;
@@ -165,7 +168,8 @@ public class MainActivity extends AppCompatActivity {
                     .setItems(txDatasets, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int index) {
                             Log.v("perf", "User chose item " + index + ": " + txDatasets[index]);
-                            datasetPath = txDatasets[index];
+                            datasetPath = "tx-data/" + txDatasets[index];
+                            tvLoadedData.setText("Current dataset: " + txDatasets[index]);
                         }
                     });
             this.datasetPicker = alertDialogBuilder.create();
