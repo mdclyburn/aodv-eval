@@ -67,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextSendAddress;
     private EditText editTextSetAddress;
 
+    private TextView tvHelloInterval;
+    private TextView tvRouteExpiryInterval;
+    private TextView tvRouteTimeout;
+    private TextView tvQueueTimeout;
+    private TextView tvQueueInterval;
+    private TextView tvQueuePollingTimeout;
+
     @Override
     protected void onCreate(@Nullable Bundle bundle) {
 
@@ -87,9 +94,25 @@ public class MainActivity extends AppCompatActivity {
         editTextSendAddress = findViewById(R.id.editAddressField);
         editTextSetAddress = findViewById(R.id.setAddressField);
 
+        tvHelloInterval = findViewById(R.id.editHelloInterval);
+        tvRouteExpiryInterval = findViewById(R.id.editRouteExpiryInterval);
+        tvRouteTimeout = findViewById(R.id.editRouteTimeout);
+        tvQueueTimeout = findViewById(R.id.editQueueTimeout);
+        tvQueueInterval = findViewById(R.id.editQueueInterval);
+        tvQueuePollingTimeout = findViewById(R.id.editQueuePollingTimeout);
+
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                network.setIntervalsAndTimeouts(
+                        Integer.parseInt(tvHelloInterval.getText().toString()),
+                        Integer.parseInt(tvRouteExpiryInterval.getText().toString()),
+                        Integer.parseInt(tvRouteTimeout.getText().toString()),
+                        Integer.parseInt(tvQueueTimeout.getText().toString()),
+                        Integer.parseInt(tvQueueInterval.getText().toString()),
+                        Integer.parseInt(tvHelloInterval.getText().toString())
+                );
+
                 String name = editTextSendAddress.getText().toString();
                 short address = strToShort(name);
                 if (address != 0) {

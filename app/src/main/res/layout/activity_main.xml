@@ -7,6 +7,54 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/editQueueInterval"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/queue_interval"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/editRouteExpiryInterval"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editRouteTimeout" />
+
+    <EditText
+        android:id="@+id/editQueuePollingTimeout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/queue_polling_timeout"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/editHelloInterval"
+        app:layout_constraintTop_toBottomOf="@+id/editQueueTimeout" />
+
+    <EditText
+        android:id="@+id/editRouteTimeout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/route_timeout"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/editRouteExpiryInterval"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editHelloInterval" />
+
+    <EditText
+        android:id="@+id/editQueueTimeout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/queue_timeout"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/editHelloInterval"
+        app:layout_constraintTop_toBottomOf="@+id/editRouteExpiryInterval" />
+
     <TextView
         android:id="@+id/deviceName"
         android:layout_width="0dp"
@@ -19,27 +67,25 @@
         android:id="@+id/lastMessageRx"
         android:layout_width="0dp"
         android:layout_height="22dp"
+        android:layout_marginBottom="26dp"
         android:text="@string/no_messages_yet"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@id/lastMessageTx"
+        app:layout_constraintBottom_toTopOf="@+id/lastMessageTx"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.899" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/lastMessageTx"
         android:layout_width="0dp"
         android:layout_height="22dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/no_messages_yet"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/setAddressField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/numConnectionsText"
@@ -74,9 +120,34 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:id="@+id/editHelloInterval"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hello_interval"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/editRouteExpiryInterval"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routeTabletextView" />
+
+    <EditText
+        android:id="@+id/editRouteExpiryInterval"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/route_expiry_interval"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editHelloInterval"
+        app:layout_constraintTop_toBottomOf="@+id/routeTabletextView" />
+
+    <EditText
         android:id="@+id/setAddressField"
         android:layout_width="254dp"
         android:layout_height="41dp"
+        android:layout_marginEnd="2dp"
         android:hint="@string/set_address_field"
         android:importantForAutofill="no"
         android:inputType="text"

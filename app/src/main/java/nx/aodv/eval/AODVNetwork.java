@@ -55,12 +55,12 @@ class AODVNetwork {
 
     private static final int MAX_NEIGHBORS = 3;
 
-    private static final long HELLO_INTERVAL = 2000;
-    private static final long ROUTE_EXPIRY_INTERVAL = 3000;
-    private static final long ROUTE_TIMEOUT = 7000;
-    private static final long QUEUE_TIMEOUT = 7000;
-    private static final long QUEUE_INTERVAL = 500;
-    private static final long QUEUE_POLLING_TIMEOUT = 5000;
+    private static long HELLO_INTERVAL = 2000;
+    private static long ROUTE_EXPIRY_INTERVAL = 3000;
+    private static long ROUTE_TIMEOUT = 7000;
+    private static long QUEUE_TIMEOUT = 7000;
+    private static long QUEUE_INTERVAL = 500;
+    private static long QUEUE_POLLING_TIMEOUT = 5000;
 
     private int totalPayloadTx;
     private int totalPayloadRx;
@@ -367,6 +367,20 @@ class AODVNetwork {
 
     short getAddress() {
         return self.address;
+    }
+
+    void setIntervalsAndTimeouts(long HELLO_INTERVAL,
+            long ROUTE_EXPIRY_INTERVAL,
+            long ROUTE_TIMEOUT,
+            long QUEUE_TIMEOUT,
+            long QUEUE_INTERVAL,
+            long QUEUE_POLLING_TIMEOUT){
+        this.HELLO_INTERVAL = HELLO_INTERVAL;
+        this.ROUTE_EXPIRY_INTERVAL = ROUTE_EXPIRY_INTERVAL;
+        this.ROUTE_TIMEOUT = ROUTE_TIMEOUT;
+        this.QUEUE_TIMEOUT = QUEUE_TIMEOUT;
+        this.QUEUE_INTERVAL = QUEUE_INTERVAL;
+        this.QUEUE_POLLING_TIMEOUT = QUEUE_POLLING_TIMEOUT;
     }
 
     public int getLocalSize() {

@@ -12,5 +12,13 @@
   <string name="default_address">0</string>
   <string name="set_address_button">Set Address</string>
   <string name="devices_in_network_1">Devices in network: 1</string>
-    <string name="label_route_table">Routing table</string>
+  <string name="label_route_table">Routing table</string>
+
+  <string name="hello_interval">Hello Interval</string>
+  <string name="route_expiry_interval">Route Expiry Interval</string>
+  <string name="route_timeout">Route Timeout</string>
+  <string name="queue_timeout">Queue Timeout</string>
+  <string name="queue_interval">Queue Interval</string>
+  <string name="queue_polling_timeout">Queue Polling Timeout</string>
+
 </resources>
