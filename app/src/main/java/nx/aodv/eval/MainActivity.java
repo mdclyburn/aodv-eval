@@ -1,8 +1,13 @@
 package nx.aodv.eval;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.CallSuper;
@@ -10,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.util.Log;
 import android.view.View;
@@ -22,6 +28,7 @@ import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.connection.ConnectionsClient;
 import com.google.location.nearby.apps.connectedcrossroad.R;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -55,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     private Button sendMessageButton;
     private Button setAddressButton;
     private Button sendBurstButton;
+    private Button loadDataButton;
 
     private TextView tvNumConnected;
     private TextView tvName;
@@ -62,17 +70,23 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvLatestRx;
     private TextView tvRouteTable;
     private TextView tvBytesRx;
+    private TextView tvLoadedData;
 
     private EditText editTextSendMessage;
     private EditText editTextSendAddress;
     private EditText editTextSetAddress;
-
+    
     private TextView tvHelloInterval;
     private TextView tvRouteExpiryInterval;
     private TextView tvRouteTimeout;
     private TextView tvQueueTimeout;
     private TextView tvQueueInterval;
     private TextView tvQueuePollingTimeout;
+
+    private String datasetPath;
+    private String[] txDatasets;
+    private AlertDialog datasetPicker;
+
 
     @Override
     protected void onCreate(@Nullable Bundle bundle) {
@@ -83,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         sendMessageButton = findViewById(R.id.sendMessageButton);
         setAddressButton = findViewById(R.id.setAddressButton);
         sendBurstButton = findViewById(R.id.sendBurstButton);
+        loadDataButton = findViewById(R.id.buttonLoadData);
 
         tvName = findViewById(R.id.deviceName);
         tvNumConnected = findViewById(R.id.numConnectionsText);
@@ -154,12 +169,46 @@ public class MainActivity extends AppCompatActivity {
                 if (address != 0) {
                     for (int x = 0; x < 10; x++) {
                         sendMessage(address, editTextSendMessage.getText().toString());
-                        TimeUnit.SECONDS.sleep(1);
+
+                        try {
+                            TimeUnit.SECONDS.sleep(1);
+                        } catch (InterruptedException interrupted) {
+                            Log.e("perf", "Failed to sleep for burst send testing.");
+                        }
                     }
                 }
             }
         });
+        //this.setAddressClicked();
 
+        this.tvLoadedData = findViewById(R.id.loadedDataTextView);
+        this.tvLoadedData.setText("(No dataset selected)");
+        try {
+            txDatasets = this.getAssets().list("tx-data/");
+            datasetPath = null;
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder
+                    .setTitle("Pick dataset")
+                    .setItems(txDatasets, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int index) {
+                            Log.v("perf", "User chose item " + index + ": " + txDatasets[index]);
+                            datasetPath = "tx-data/" + txDatasets[index];
+                            tvLoadedData.setText("Current dataset: " + txDatasets[index]);
+                        }
+                    });
+            this.datasetPicker = alertDialogBuilder.create();
+
+            this.loadDataButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    datasetPicker.show();
+                }
+            });
+        } catch (IOException e) {
+            Log.e("perf", "Could not list assets.");
+            findViewById(R.id.buttonLoadData)
+                    .setEnabled(false);
+        }
     }
 
     @Override
@@ -240,4 +289,16 @@ public class MainActivity extends AppCompatActivity {
         return num;
     }
 
+    private void setAddressClicked() {
+        short address = 3;
+        if (address != 0) {
+            network.setAddress(address);
+            tvName.setText(String.format("Device name: %s", address));
+            //disable the button and field so they can't be set again
+            editTextSetAddress.setEnabled(false);
+            setAddressButton.setEnabled(false);
+            //start network operations after address is set
+            network.start();
+        }
+    }
 }

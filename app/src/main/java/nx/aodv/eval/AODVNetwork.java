@@ -1,7 +1,6 @@
 package nx.aodv.eval;
 
 import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -62,8 +61,11 @@ class AODVNetwork {
     private static long QUEUE_INTERVAL = 500;
     private static long QUEUE_POLLING_TIMEOUT = 5000;
 
+    // Data RX/TX totals; payload-only and entire packet data.
     private int totalPayloadTx;
     private int totalPayloadRx;
+    private int totalTx;
+    private int totalRx;
 
     //self routing info
     private final AODVRoute self;
@@ -125,6 +127,8 @@ class AODVNetwork {
                 TextView tvRouteTable) {
 
         this.totalPayloadRx = this.totalPayloadTx = 0;
+        this.totalRx = this.totalTx = 0;
+
         this.self = new AODVRoute();
         this.self.address = DEFAULT_NAME;
         this.routeTable = Collections.synchronizedMap(new HashMap<Short, AODVRoute>());
@@ -213,6 +217,7 @@ class AODVNetwork {
                             //remove expired routes
                             for (AODVRoute route : routeTable.values()) {
                                 if (route.timeout < timeMillis) {
+                                    Log.v("perf", "Route to " + route.address + " (" + route.id + ") expired.");
                                     removeRouteByAddress(route.address);
                                 }
                             }
@@ -294,7 +299,7 @@ class AODVNetwork {
                         if (msg != null) {
                             synchronized (routeTableLock) {
                                 handleAODVMessage(msg);
-                                updateTotals();
+                                showTrafficTotals();
                             }
                         }
                     } catch (InterruptedException e) {
@@ -306,6 +311,7 @@ class AODVNetwork {
         };
         this.handleAODVThread = new Thread(handleAODVRunnable);
 
+        Log.v("perf", "AODV networking started.");
     }
 
     void start() {
@@ -329,6 +335,7 @@ class AODVNetwork {
         stopDiscovery();
         stopAdvertising();
         connectionsClient.stopAllEndpoints();
+        Log.v("perf", "Networking stopped");
     }
 
     void startDiscovery() {
@@ -431,7 +438,7 @@ class AODVNetwork {
             }
         }
 
-        updateTotals();
+        showTrafficTotals();
     }
 
     private void sendMessage(AODVMessage msg) {
@@ -442,6 +449,7 @@ class AODVNetwork {
         } else {
             udpTxQueue.add(msg);
         }
+        this.totalPayloadTx += msg.header.length;
     }
 
     private void broadcastMessage(AODVMessage msg) {
@@ -455,6 +463,7 @@ class AODVNetwork {
         try {
             byte[] bytes = SerializationHelper.serialize(msg);
             Payload payload = Payload.fromBytes(bytes);
+            totalTx += bytes.length;
             totalPayloadTx += msg.header.length;
             connectionsClient.sendPayload(msg.header.nextId, payload);
         } catch (IOException e) {
@@ -527,6 +536,8 @@ class AODVNetwork {
             //we can only know neighbor Addr from hello messages
             if (neighbor != null) {
                 if (!neighborAddressToId.containsKey(sendAddr)) {
+                    Log.v("perf", "Discovered neighbor: " + sendAddr + " (" + sendId + ")");
+                    Log.v("perf", "Bytes sent: " + totalTx + ", received: " + totalRx);
                     neighborAddressToId.put(sendAddr, sendId);
                 }
                 neighbor.address = msg.header.srcAddr;
@@ -992,9 +1003,11 @@ class AODVNetwork {
         lastMessageRx.setText(display);
     }
 
-    private void updateTotals() {
+    private void showTrafficTotals() {
         Log.v("data", "Payload RX: " + this.totalPayloadRx);
         Log.v("data", "Payload TX: " + this.totalPayloadTx);
+        Log.v("data", "Total RX: " + this.totalRx);
+        Log.v("data", "Total TX: " + this.totalTx);
 
         return;
     }
@@ -1114,6 +1127,7 @@ class AODVNetwork {
                     Log.d(TAG, "onDisconnected: Failed to remove neighbor");
                 }
             }
+            Log.v("perf", "Disconnected from " + endpointId);
             updateDevicesConnected();
         }
     };
@@ -1131,8 +1145,10 @@ class AODVNetwork {
          */
         @Override
         public void onPayloadReceived(@NonNull String endpointId, Payload payload) {
+            byte[] payloadBytes = payload.asBytes();
+            totalRx += payloadBytes.length;
             try {
-                Object deserialized = SerializationHelper.deserialize(payload.asBytes());
+                Object deserialized = SerializationHelper.deserialize(payloadBytes);
                 if (deserialized instanceof AODVMessage) {
                     AODVMessage msg = (AODVMessage) deserialized;
                     //this is the only place we can set the sender Id, which is needed for some control
