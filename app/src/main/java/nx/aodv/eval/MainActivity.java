@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     //private Network network;
     private AODVNetwork network;
 
+    private DataReplay dataReplay;
+
     private Button sendMessageButton;
     private Button setAddressButton;
     private Button sendBurstButton;
@@ -160,7 +162,8 @@ public class MainActivity extends AppCompatActivity {
         this.tvLoadedData = findViewById(R.id.loadedDataTextView);
         this.tvLoadedData.setText("(No dataset selected)");
         try {
-            txDatasets = this.getAssets().list("tx-data/");
+            final AssetManager assetManager = this.getAssets();
+            txDatasets = assetManager.list("tx-data/");
             datasetPath = null;
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder
@@ -170,6 +173,14 @@ public class MainActivity extends AppCompatActivity {
                             Log.v("perf", "User chose item " + index + ": " + txDatasets[index]);
                             datasetPath = "tx-data/" + txDatasets[index];
                             tvLoadedData.setText("Current dataset: " + txDatasets[index]);
+
+                            if (txDatasets[index].endsWith(".csv")) {
+                                try {
+                                    dataReplay.load(assetManager.open(datasetPath));
+                                } catch (IOException e) {
+                                    Log.e("perf", "Failed to open '" + datasetPath + "': " + e.getMessage());
+                                }
+                            }
                         }
                     });
             this.datasetPicker = alertDialogBuilder.create();
