@@ -29,6 +29,7 @@ import com.google.android.gms.nearby.connection.ConnectionsClient;
 import com.google.location.nearby.apps.connectedcrossroad.R;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private Button sendBurstButton;
     private Button loadDataButton;
     private Button sendDataButton;
+    private Button sendAsButton;
 
     private TextView tvNumConnected;
     private TextView tvName;
@@ -82,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
     private String datasetPath;
     private String[] txDatasets;
     private AlertDialog datasetPicker;
+    private AlertDialog sourcePicker;
+    private String[] datasetSources;
 
     @Override
     protected void onCreate(@Nullable Bundle bundle) {
@@ -97,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
         loadDataButton = findViewById(R.id.buttonLoadData);
         sendDataButton = findViewById(R.id.sendDatasetButton);
         sendDataButton.setEnabled(false);
+        sendAsButton = findViewById(R.id.sendAsButton);
+        sendAsButton.setEnabled(false);
 
         tvName = findViewById(R.id.deviceName);
         tvNumConnected = findViewById(R.id.numConnectionsText);
@@ -164,8 +170,9 @@ public class MainActivity extends AppCompatActivity {
         });
         //this.setAddressClicked();
 
+        final android.content.Context theContext = this;
         this.tvLoadedData = findViewById(R.id.loadedDataTextView);
-        this.tvLoadedData.setText("(No dataset selected)");
+        this.tvLoadedData.setText("(No dataset)");
         try {
             final AssetManager assetManager = this.getAssets();
             txDatasets = assetManager.list("tx-data/");
@@ -188,7 +195,35 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
 
-                            sendDataButton.setEnabled(true);
+                            // populate dataset sources list
+                            HashSet<String> possibleSources = dataReplay.sources();
+                            datasetSources = new String[possibleSources.size()];
+                            int idx = 0;
+                            for (String source : possibleSources) {
+                                datasetSources[idx++] = source;
+                            }
+
+                            AlertDialog.Builder sourceDialogBuilder = new AlertDialog.Builder(theContext);
+                            sourceDialogBuilder
+                                    .setTitle("Pick source")
+                                    .setItems(datasetSources, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int idx) {
+                                            String source = datasetSources[idx];
+                                            Log.v("perf", "Sending data from source " + source);
+
+                                            dataReplay.sendAs(source);
+                                        }
+                                    });
+                            sourcePicker = sourceDialogBuilder.create();
+
+                            sendAsButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    sourcePicker.show();
+                                }
+                            });
+                            sendAsButton.setEnabled(true);
                         }
                     });
             this.datasetPicker = alertDialogBuilder.create();

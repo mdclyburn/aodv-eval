@@ -35,8 +35,9 @@ public class DataReplay {
         BufferedReader reader = new BufferedReader(new InputStreamReader(istream));
         String line;
 
+        this.allData.clear();
         while((line = reader.readLine()) != null) {
-            String[] cols = line.split("|");
+            String[] cols = line.split("\\|");
             Row row = new Row();
             row.time = cols[this.COL_TIMESTAMP];
             row.source = cols[this.COL_SOURCE];
@@ -57,8 +58,9 @@ public class DataReplay {
         this.pendingData.clear();
 
         for(Row row : this.allData) {
-            if (row.source != source) { continue; }
+            if (!row.source.equals(source)) { continue; }
 
+            // Calculate offset to send the packet at.
             Date time;
             try {
                 time = timestampFormat.parse(row.time);
@@ -82,16 +84,20 @@ public class DataReplay {
             int index = 0;
             for(String hsByte : hsBytes) {
                 try {
-                    byte b = Byte.parseByte(hsByte, 16);
-                    payloadBytes[index++] = b;
+                    int b = Integer.parseInt(hsByte, 16);
+                    payloadBytes[index++] = (byte) b;
                 } catch (NumberFormatException e) {
-                    Log.e("perf", "Failed to parse payload data: " + row.payload);
+                    Log.e("perf", "Failed to parse byte " + hsByte + " in " + row.payload);
                     return;
                 }
             }
 
-            pendingData.add(new Data(offset, payloadBytes));
+            this.pendingData.add(new Data(offset, payloadBytes));
         }
+
+        Log.v("perf", "Sending " + this.pendingData.size() + " packets as " + source);
+
+        return;
     }
 
     public HashSet<String> sources() {

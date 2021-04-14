@@ -156,4 +156,13 @@
         app:layout_constraintStart_toEndOf="@+id/loadedDataTextView"
         app:layout_constraintTop_toBottomOf="@+id/routeTabletextView" />
 
+    <Button
+        android:id="@+id/sendAsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="Send As"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLoadData" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
