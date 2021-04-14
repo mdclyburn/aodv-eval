@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private Button setAddressButton;
     private Button sendBurstButton;
     private Button loadDataButton;
+    private Button sendDataButton;
 
     private TextView tvNumConnected;
     private TextView tvName;
@@ -94,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
         setAddressButton = findViewById(R.id.setAddressButton);
         sendBurstButton = findViewById(R.id.sendBurstButton);
         loadDataButton = findViewById(R.id.buttonLoadData);
+        sendDataButton = findViewById(R.id.sendDatasetButton);
+        sendDataButton.setEnabled(false);
 
         tvName = findViewById(R.id.deviceName);
         tvNumConnected = findViewById(R.id.numConnectionsText);
@@ -184,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
                                     Log.e("perf", "Failed to open '" + datasetPath + "': " + e.getMessage());
                                 }
                             }
+
+                            sendDataButton.setEnabled(true);
                         }
                     });
             this.datasetPicker = alertDialogBuilder.create();
