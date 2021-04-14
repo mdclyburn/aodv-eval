@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(bundle);
         setContentView(R.layout.activity_main);
 
+        dataReplay = new DataReplay();
+
         sendMessageButton = findViewById(R.id.sendMessageButton);
         setAddressButton = findViewById(R.id.setAddressButton);
         sendBurstButton = findViewById(R.id.sendBurstButton);
@@ -175,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
                             tvLoadedData.setText("Current dataset: " + txDatasets[index]);
 
                             if (txDatasets[index].endsWith(".csv")) {
+                                Log.v("perf", "Loading " + datasetPath);
                                 try {
                                     dataReplay.load(assetManager.open(datasetPath));
                                 } catch (IOException e) {

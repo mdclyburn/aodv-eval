@@ -45,6 +45,8 @@ public class DataReplay {
             this.allData.add(row);
         }
 
+        Log.v("perf", "Added " + this.allData.size() + " rows to data replay.");
+
         return;
     }
 
