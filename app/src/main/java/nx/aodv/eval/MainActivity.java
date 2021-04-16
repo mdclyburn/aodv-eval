@@ -213,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
                                             Log.v("perf", "Sending data from source " + source);
 
                                             dataReplay.sendAs(source);
+                                            sendDataButton.setEnabled(true);
                                         }
                                     });
                             sourcePicker = sourceDialogBuilder.create();
@@ -239,6 +240,53 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.buttonLoadData)
                     .setEnabled(false);
         }
+
+        this.sendDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("perf", "Beginning data transmission.");
+                // do not allow further button presses that could interrupt the process
+                loadDataButton.setEnabled(false);
+                sendAsButton.setEnabled(false);
+                sendDataButton.setEnabled(false);
+
+                String name = editTextSendAddress.getText().toString();
+                final short scheduledToAddress = strToShort(name);
+
+                Runnable scheduledSend = new Runnable() {
+                    @Override
+                    public void run() {
+                        long waited = 0;
+                        while (dataReplay.hasNext()) {
+                            final long t = dataReplay.nextOffset();
+                            final long waitMs = t - waited;
+                            waited += waitMs;
+
+                            try {
+                                Thread.sleep(waitMs);
+                            } catch (InterruptedException e) {
+                                Log.e("perf", "Scheduled send interrupted during sleep.");
+                            }
+
+                            // turn this back into a string for now.
+                            String data = "";
+                            for (byte b : dataReplay.fetchPayload()) {
+                                data += b;
+                            }
+                            network.sendMessage(scheduledToAddress, data);
+                            Log.v("perf", "Sent data of length " + data.length() + " to " + scheduledToAddress);
+                        }
+
+                        Log.v("perf", "Done sending stuff on schedule.");
+                        loadDataButton.setEnabled(true);
+                        sendAsButton.setEnabled(true);
+                        sendDataButton.setEnabled(true);
+                    }
+                };
+
+                scheduledSend.run();
+            }
+        });
     }
 
     @Override
