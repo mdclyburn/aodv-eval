@@ -120,12 +120,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 network.setIntervalsAndTimeouts(
-                        Integer.parseInt(tvHelloInterval.getText().toString()),
-                        Integer.parseInt(tvRouteExpiryInterval.getText().toString()),
-                        Integer.parseInt(tvRouteTimeout.getText().toString()),
-                        Integer.parseInt(tvQueueTimeout.getText().toString()),
-                        Integer.parseInt(tvQueueInterval.getText().toString()),
-                        Integer.parseInt(tvHelloInterval.getText().toString())
+                        2000,
+                        3000,
+                        7000,
+                        7000,
+                        500,
+                        5000
+//                        Integer.parseInt(tvHelloInterval.getText().toString()),
+//                        Integer.parseInt(tvRouteExpiryInterval.getText().toString()),
+//                        Integer.parseInt(tvRouteTimeout.getText().toString()),
+//                        Integer.parseInt(tvQueueTimeout.getText().toString()),
+//                        Integer.parseInt(tvQueueInterval.getText().toString()),
+//                        Integer.parseInt(tvHelloInterval.getText().toString())
                 );
 
                 String name = editTextSendAddress.getText().toString();
