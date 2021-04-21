@@ -132,20 +132,20 @@ public class MainActivity extends AppCompatActivity {
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                network.setIntervalsAndTimeouts(
-                        2000,
-                        3000,
-                        7000,
-                        7000,
-                        500,
-                        5000
-//                        Integer.parseInt(tvHelloInterval.getText().toString()),
-//                        Integer.parseInt(tvRouteExpiryInterval.getText().toString()),
-//                        Integer.parseInt(tvRouteTimeout.getText().toString()),
-//                        Integer.parseInt(tvQueueTimeout.getText().toString()),
-//                        Integer.parseInt(tvQueueInterval.getText().toString()),
-//                        Integer.parseInt(tvHelloInterval.getText().toString())
-                );
+//                network.setIntervalsAndTimeouts(
+//                        2000,
+//                        3000,
+//                        7000,
+//                        7000,
+//                        500,
+//                        5000
+////                        Integer.parseInt(tvHelloInterval.getText().toString()),
+////                        Integer.parseInt(tvRouteExpiryInterval.getText().toString()),
+////                        Integer.parseInt(tvRouteTimeout.getText().toString()),
+////                        Integer.parseInt(tvQueueTimeout.getText().toString()),
+////                        Integer.parseInt(tvQueueInterval.getText().toString()),
+////                        Integer.parseInt(tvHelloInterval.getText().toString())
+//                );
 
                 String name = editTextSendAddress.getText().toString();
                 short address = strToShort(name);
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                 String name = editTextSendAddress.getText().toString();
                 short address = strToShort(name);
                 if (address != 0) {
-                    for (int x = 0; x < 10; x++) {
+                    for (int x = 0; x < 5; x++) {
                         sendMessage(address, editTextSendMessage.getText().toString());
 
                         try {

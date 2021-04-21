@@ -1,0 +1,1 @@
+C:\Users\ryana\AppData\Local\Android\Sdk\platform-tools\adb.exe -s 192.168.1.17:5555 logcat > Experiment\burst_count\5\1.txt

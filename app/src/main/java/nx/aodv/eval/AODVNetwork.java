@@ -508,18 +508,23 @@ class AODVNetwork {
         switch (msg.header.type) {
             case HELO:
                 handleHELLO(msg);
+                Log.d(TAG, "Data collect: HELO");
                 break;
             case DATA:
                 handleDATA(msg);
+                Log.d(TAG, "Data collect: DATA");
                 break;
             case RREQ:
                 handleRREQ(msg);
+                Log.d(TAG, "Data collect: RREQ");
                 break;
             case RREP:
                 handleRREP(msg);
+                Log.d(TAG, "Data collect: RREP");
                 break;
             case RERR:
                 handleRERR(msg);
+                Log.d(TAG, "Data collect: RERR");
                 break;
             default:
                 Log.d(TAG, "handleAODVMessage: unknown type");
@@ -569,11 +574,13 @@ class AODVNetwork {
     }
 
     private void handleDATA(AODVMessage msg) {
+        long startTime = System.currentTimeMillis();
         short destAddr = msg.header.destAddr;
         if (destAddr == self.address) {
             //do whatever with data, in our case post it to the text view
             updateLastMessageRx(msg.header.srcAddr, msg.payload);
         } else {
+            Log.d(TAG, "Data collect: intermediary hop");
             AODVRoute route = getRouteByAddress(destAddr);
             if (route != null) {
                 msg.header.nextId = route.nextHopId;
@@ -590,6 +597,9 @@ class AODVNetwork {
                 }
             }
         }
+        long stopTime = System.currentTimeMillis();
+        long elapsedMS = stopTime - startTime;
+        Log.d(TAG, "Data collect: handle data elapsed MS: " + elapsedMS);
     }
 
     private void handleRREQ(AODVMessage msg) {
