@@ -29,6 +29,7 @@ import com.google.android.gms.nearby.connection.ConnectionsClient;
 import com.google.location.nearby.apps.connectedcrossroad.R;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -59,10 +60,14 @@ public class MainActivity extends AppCompatActivity {
     //private Network network;
     private AODVNetwork network;
 
+    private DataReplay dataReplay;
+
     private Button sendMessageButton;
     private Button setAddressButton;
     private Button sendBurstButton;
     private Button loadDataButton;
+    private Button sendDataButton;
+    private Button sendAsButton;
 
     private TextView tvNumConnected;
     private TextView tvName;
@@ -86,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
     private String datasetPath;
     private String[] txDatasets;
     private AlertDialog datasetPicker;
+    private AlertDialog sourcePicker;
+    private String[] datasetSources;
 
 
     @Override
@@ -94,10 +101,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(bundle);
         setContentView(R.layout.activity_main);
 
+        dataReplay = new DataReplay();
+
         sendMessageButton = findViewById(R.id.sendMessageButton);
         setAddressButton = findViewById(R.id.setAddressButton);
         sendBurstButton = findViewById(R.id.sendBurstButton);
         loadDataButton = findViewById(R.id.buttonLoadData);
+        sendDataButton = findViewById(R.id.sendDatasetButton);
+        sendDataButton.setEnabled(false);
+        sendAsButton = findViewById(R.id.sendAsButton);
+        sendAsButton.setEnabled(false);
 
         tvName = findViewById(R.id.deviceName);
         tvNumConnected = findViewById(R.id.numConnectionsText);
@@ -187,10 +200,12 @@ public class MainActivity extends AppCompatActivity {
         });
         //this.setAddressClicked();
 
+        final android.content.Context theContext = this;
         this.tvLoadedData = findViewById(R.id.loadedDataTextView);
-        this.tvLoadedData.setText("(No dataset selected)");
+        this.tvLoadedData.setText("(No dataset)");
         try {
-            txDatasets = this.getAssets().list("tx-data/");
+            final AssetManager assetManager = this.getAssets();
+            txDatasets = assetManager.list("tx-data/");
             datasetPath = null;
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder
@@ -200,6 +215,46 @@ public class MainActivity extends AppCompatActivity {
                             Log.v("perf", "User chose item " + index + ": " + txDatasets[index]);
                             datasetPath = "tx-data/" + txDatasets[index];
                             tvLoadedData.setText("Current dataset: " + txDatasets[index]);
+
+                            if (txDatasets[index].endsWith(".csv")) {
+                                Log.v("perf", "Loading " + datasetPath);
+                                try {
+                                    dataReplay.load(assetManager.open(datasetPath));
+                                } catch (IOException e) {
+                                    Log.e("perf", "Failed to open '" + datasetPath + "': " + e.getMessage());
+                                }
+                            }
+
+                            // populate dataset sources list
+                            HashSet<String> possibleSources = dataReplay.sources();
+                            datasetSources = new String[possibleSources.size()];
+                            int idx = 0;
+                            for (String source : possibleSources) {
+                                datasetSources[idx++] = source;
+                            }
+
+                            AlertDialog.Builder sourceDialogBuilder = new AlertDialog.Builder(theContext);
+                            sourceDialogBuilder
+                                    .setTitle("Pick source")
+                                    .setItems(datasetSources, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int idx) {
+                                            String source = datasetSources[idx];
+                                            Log.v("perf", "Sending data from source " + source);
+
+                                            dataReplay.sendAs(source);
+                                            sendDataButton.setEnabled(true);
+                                        }
+                                    });
+                            sourcePicker = sourceDialogBuilder.create();
+
+                            sendAsButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    sourcePicker.show();
+                                }
+                            });
+                            sendAsButton.setEnabled(true);
                         }
                     });
             this.datasetPicker = alertDialogBuilder.create();
@@ -215,6 +270,53 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.buttonLoadData)
                     .setEnabled(false);
         }
+
+        this.sendDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("perf", "Beginning data transmission.");
+                // do not allow further button presses that could interrupt the process
+                loadDataButton.setEnabled(false);
+                sendAsButton.setEnabled(false);
+                sendDataButton.setEnabled(false);
+
+                String name = editTextSendAddress.getText().toString();
+                final short scheduledToAddress = strToShort(name);
+
+                Runnable scheduledSend = new Runnable() {
+                    @Override
+                    public void run() {
+                        long waited = 0;
+                        while (dataReplay.hasNext()) {
+                            final long t = dataReplay.nextOffset();
+                            final long waitMs = t - waited;
+                            waited += waitMs;
+
+                            try {
+                                Thread.sleep(waitMs);
+                            } catch (InterruptedException e) {
+                                Log.e("perf", "Scheduled send interrupted during sleep.");
+                            }
+
+                            // turn this back into a string for now.
+                            String data = "";
+                            for (byte b : dataReplay.fetchPayload()) {
+                                data += b;
+                            }
+                            network.sendMessage(scheduledToAddress, data);
+                            Log.v("perf", "Sent data of length " + data.length() + " to " + scheduledToAddress);
+                        }
+
+                        Log.v("perf", "Done sending stuff on schedule.");
+                        loadDataButton.setEnabled(true);
+                        sendAsButton.setEnabled(true);
+                        sendDataButton.setEnabled(true);
+                    }
+                };
+
+                scheduledSend.run();
+            }
+        });
     }
 
     @Override
