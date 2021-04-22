@@ -461,6 +461,7 @@ class AODVNetwork {
 
     private synchronized void sendCCMessage(AODVMessage msg) {
         try {
+            Log.d(TAG, "Data collect: SEND");
             byte[] bytes = SerializationHelper.serialize(msg);
             Payload payload = Payload.fromBytes(bytes);
             totalTx += bytes.length;
