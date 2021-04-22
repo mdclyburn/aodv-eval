@@ -1,0 +1,883 @@
+--------- beginning of system
+04-20 20:05:22.452  2308  2308 V FingerprintManager: showFodIndicator show:true by (com.android.systemui)
+04-20 20:05:22.462  1743  1743 I chatty  : uid=1000 system_server expire 6 lines
+04-20 20:05:22.488  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 3 lines
+04-20 20:05:22.625  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 2 lines
+04-20 20:05:22.625  1743  1762 I chatty  : uid=1000(system) android.fg expire 3 lines
+04-20 20:05:22.695  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 2 lines
+04-20 20:05:22.695  1743  1766 I chatty  : uid=1000(system) android.anim expire 6 lines
+04-20 20:05:22.708  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 2 lines
+04-20 20:05:22.828  1743  1763 I chatty  : uid=1000(system) android.ui expire 1 line
+04-20 20:05:22.840  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 2 lines
+04-20 20:05:23.221  1743  1765 I chatty  : uid=1000(system) android.display expire 1 line
+04-20 20:05:23.228  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 6 lines
+04-20 20:05:39.606  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 1 line
+04-20 20:05:44.031  1743  2246 I chatty  : uid=1000(system) NsdService expire 14 lines
+04-20 20:06:01.058  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 22 lines
+04-20 20:06:06.566  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 3 lines
+04-20 20:06:41.048  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 8 lines
+04-20 20:06:57.530  1743  1766 I chatty  : uid=1000(system) android.anim expire 25 lines
+04-20 20:07:53.605  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 1 line
+04-20 20:07:54.506  1743  1743 I chatty  : uid=1000 system_server expire 11 lines
+04-20 20:08:16.091  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 9 lines
+04-20 20:08:18.887  1743  5994 I chatty  : uid=1000(system) Binder:1743_17 expire 3 lines
+04-20 20:08:18.916  1743  7290 I chatty  : uid=1000(system) Binder:1743_1A expire 5 lines
+04-20 20:08:30.166  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 4 lines
+04-20 20:08:30.582  1743  1765 I chatty  : uid=1000(system) android.display expire 2 lines
+04-20 20:08:40.221  1743  1771 I chatty  : uid=1000(system) android.bg expire 3 lines
+04-20 20:08:54.170  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 1 line
+04-20 20:08:54.517  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 1 line
+--------- beginning of crash
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: FATAL EXCEPTION: Thread-7
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: Process: com.google.location.nearby.apps.connectedcrossroad, PID: 3708
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.ViewRootImpl.checkThread(ViewRootImpl.java:8344)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.ViewRootImpl.requestLayout(ViewRootImpl.java:1499)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.View.requestLayout(View.java:24525)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.View.requestLayout(View.java:24525)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.View.requestLayout(View.java:24525)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.View.requestLayout(View.java:24525)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.View.requestLayout(View.java:24525)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.View.requestLayout(View.java:24525)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at androidx.constraintlayout.widget.ConstraintLayout.requestLayout(ConstraintLayout.java:3172)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.view.View.requestLayout(View.java:24525)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.widget.TextView.checkForRelayout(TextView.java:9731)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.widget.TextView.setText(TextView.java:6296)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.widget.TextView.setText(TextView.java:6124)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at android.widget.TextView.setText(TextView.java:6076)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at nx.aodv.eval.AODVNetwork.updateRouteTableDisplay(AODVNetwork.java:998)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at nx.aodv.eval.AODVNetwork.handleRREQ(AODVNetwork.java:613)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at nx.aodv.eval.AODVNetwork.handleAODVMessage(AODVNetwork.java:516)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at nx.aodv.eval.AODVNetwork.access$2000(AODVNetwork.java:43)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at nx.aodv.eval.AODVNetwork$6.run(AODVNetwork.java:301)
+04-20 20:11:02.501  3708  3848 E AndroidRuntime: 	at java.lang.Thread.run(Thread.java:919)
+04-20 20:11:02.514  1743  4124 I chatty  : uid=1000 system_server expire 1 line
+04-20 20:11:02.517  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 2 lines
+04-20 20:11:02.672  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 1 line
+04-20 20:11:02.695  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 2 lines
+04-20 20:13:51.135  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 5 lines
+04-20 20:13:55.326  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 10 lines
+04-20 20:13:55.375  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 10 lines
+04-20 20:13:55.376  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 3 lines
+04-20 20:14:01.888  1743  1743 I chatty  : uid=1000 system_server expire 11 lines
+04-20 20:14:01.908  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 5 lines
+04-20 20:14:01.911  1743  1766 I chatty  : uid=1000(system) android.anim expire 18 lines
+04-20 20:14:02.278  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 5 lines
+04-20 20:14:02.583  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 1 line
+04-20 20:18:09.446  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 10 lines
+04-20 20:18:10.920  1743  1765 I chatty  : uid=1000(system) android.display expire 8 lines
+04-20 20:18:19.249  1743  3657 I chatty  : uid=1000(system) Binder:1743_F expire 1 line
+04-20 20:18:21.067  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 3 lines
+04-20 20:18:22.786  1743  1763 I chatty  : uid=1000(system) android.ui expire 4 lines
+04-20 20:18:23.245  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 14 lines
+04-20 20:18:23.947  1743  5083 I chatty  : uid=1000 system_server expire 1 line
+04-20 20:18:24.284  1743  1762 I chatty  : uid=1000(system) android.fg expire 1 line
+04-20 20:18:24.362  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 1 line
+04-20 20:18:24.435  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 1 line
+04-20 20:18:36.064  1743  3384 I chatty  : uid=1000(system) Binder:1743_B expire 2 lines
+04-20 20:18:36.092  1743  2414 I chatty  : uid=1000(system) HwBinder:1743_4 expire 1 line
+04-20 20:18:40.004  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 3 lines
+04-20 20:18:50.081  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 6 lines
+04-20 20:18:51.797  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 44 lines
+04-20 20:18:51.799  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 2 lines
+04-20 20:18:51.800  1743  1763 I chatty  : uid=1000(system) android.ui expire 12 lines
+04-20 20:18:51.820  1743  1765 I chatty  : uid=1000(system) android.display expire 16 lines
+04-20 20:18:52.650  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 3 lines
+04-20 20:18:58.333  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 4 lines
+04-20 20:19:04.085  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 1 line
+04-20 20:20:02.194  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-20 20:20:53.041  1743  1760 I chatty  : uid=1000(system) Binder:1743_1 expire 3 lines
+04-20 20:20:53.049  1743  3384 I chatty  : uid=1000(system) Binder:1743_B expire 2 lines
+04-20 20:21:16.808  1743  2157 I chatty  : uid=1000(system) InputReader expire 1 line
+04-20 20:21:16.809  1743  1743 I chatty  : uid=1000 system_server expire 7 lines
+04-20 20:21:17.189  1743  1766 I chatty  : uid=1000(system) android.anim expire 9 lines
+04-20 20:21:17.196  1743  1765 I chatty  : uid=1000(system) android.display expire 2 lines
+04-20 20:21:17.196  1743  1763 I chatty  : uid=1000(system) android.ui expire 1 line
+04-20 20:21:17.200  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 3 lines
+04-20 20:21:17.201  1743  1762 I chatty  : uid=1000(system) android.fg expire 3 lines
+04-20 20:21:17.204  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 1 line
+04-20 20:21:17.205  1743  3384 I chatty  : uid=1000(system) Binder:1743_B expire 3 lines
+04-20 20:21:27.783  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 19 lines
+04-20 20:21:27.844  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 1 line
+04-20 20:21:27.961  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 2 lines
+04-20 20:21:28.061  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 3 lines
+04-20 20:21:43.695  1743  1760 I chatty  : uid=1000(system) Binder:1743_1 expire 1 line
+04-20 20:21:55.923  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 1 line
+04-20 20:21:57.391  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 2 lines
+04-20 20:22:49.662 30045  5719 D SystemConfig: Removed unavailable feature android.hardware.sensor.gyroscope
+04-20 20:22:49.671 30045  5719 W SystemConfig: No directory /oem/etc/sysconfig, skipping
+04-20 20:22:49.671 30045  5719 W SystemConfig: No directory /oem/etc/permissions, skipping
+04-20 20:22:49.966 30045  5719 W SystemConfig: No directory /system/etc/motorola/bgintents, skipping
+04-20 20:22:49.966 30045  5719 W SystemConfig: No directory /oem/etc/motorola/bgintents, skipping
+04-20 20:22:49.975 30045  5719 W SystemConfig: No directory /product_services/etc/sysconfig, skipping
+04-20 20:22:49.975 30045  5719 W SystemConfig: No directory /product_services/etc/permissions, skipping
+04-20 20:22:49.975 30045  5719 W SystemConfig: No directory /system/etc/motorola/sysconfig, skipping
+04-20 20:22:49.975 30045  5719 W SystemConfig: No directory /oem/etc/motorola/sysconfig, skipping
+04-20 20:22:49.975 30045  5719 W SystemConfig: No directory /product/etc/motorola/sysconfig, skipping
+04-20 20:22:51.118  1743  1788 I chatty  : uid=1000(system) PackageManager expire 45 lines
+04-20 20:22:51.435  1743  2078 I chatty  : uid=1000(system) AccountManagerS expire 1 line
+04-20 20:22:51.448  1743  2660 I chatty  : uid=1000(system) android.fg expire 1 line
+04-20 20:22:51.658  1743  1762 I chatty  : uid=1000(system) android.fg expire 2 lines
+04-20 20:22:51.669  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 5 lines
+04-20 20:22:51.708  1743  1743 I chatty  : uid=1000 system_server expire 14 lines
+04-20 20:22:51.726  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 10 lines
+04-20 20:22:52.227  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 5 lines
+04-20 20:22:52.274  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 3 lines
+04-20 20:22:52.282  1743  1766 I chatty  : uid=1000(system) android.anim expire 14 lines
+04-20 20:22:52.961  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 4 lines
+04-20 20:22:57.364  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 8 lines
+04-20 20:23:08.332  1743  3657 I chatty  : uid=1000(system) Binder:1743_F expire 1 line
+04-20 20:23:08.389  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 8 lines
+04-20 20:23:13.418  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 1 line
+04-20 20:23:30.604  5948  5948 D ActivityThread: Loading provider contacts;com.android.contacts: com.android.providers.contacts.ContactsProvider2
+04-20 20:23:46.854  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 1 line
+04-20 20:24:03.348  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 1 line
+04-20 20:24:03.354  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 1 line
+04-20 20:24:51.606  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 1 line
+04-20 20:24:52.851  1743  1743 I chatty  : uid=1000 system_server expire 5 lines
+04-20 20:24:52.869  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 1 line
+04-20 20:24:58.809  1743  1765 I chatty  : uid=1000(system) android.display expire 4 lines
+04-20 20:24:58.980  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 1 line
+04-20 20:24:58.984  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 6 lines
+04-20 20:26:00.766  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 3 lines
+04-20 20:26:06.662  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 7 lines
+04-20 20:26:06.682  1743  1743 I chatty  : uid=1000 system_server expire 13 lines
+04-20 20:26:06.698  1743  1766 I chatty  : uid=1000(system) android.anim expire 12 lines
+04-20 20:26:06.705  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 3 lines
+04-20 20:26:07.073  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 9 lines
+04-20 20:26:07.631  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 1 line
+04-20 20:26:07.632  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 1 line
+04-20 20:26:07.666  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 5 lines
+04-20 20:26:07.666  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 1 line
+04-20 20:26:07.667  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 2 lines
+04-20 20:26:07.675  1743  1765 I chatty  : uid=1000(system) android.display expire 4 lines
+04-20 20:26:33.490  1743  2246 I chatty  : uid=1000(system) NsdService expire 7 lines
+04-20 20:27:03.128  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 2 lines
+04-20 20:27:03.871  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 1 line
+04-20 20:27:03.881  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 1 line
+04-20 20:27:12.989  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 5 lines
+04-20 20:27:59.162  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 7 lines
+04-20 20:27:59.512  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 3 lines
+04-20 20:28:04.151  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 1 line
+04-20 20:28:45.633  1743  1763 I chatty  : uid=1000(system) android.ui expire 2 lines
+04-20 20:28:46.084  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 6 lines
+04-20 20:28:46.096  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 3 lines
+04-20 20:28:46.108  1743  6886 I chatty  : uid=1000 system_server expire 1 line
+04-20 20:28:46.366  1743  1762 I chatty  : uid=1000(system) android.fg expire 1 line
+04-20 20:28:46.582  1743  1760 I chatty  : uid=1000(system) Binder:1743_1 expire 3 lines
+04-20 20:28:46.898  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 1 line
+04-20 20:28:46.919  1743  1766 I chatty  : uid=1000(system) android.anim expire 1 line
+04-20 20:28:46.923  1743  1743 I chatty  : uid=1000 system_server expire 1 line
+04-20 20:28:55.842  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 52 lines
+04-20 20:28:55.848  1743  1763 I chatty  : uid=1000(system) android.ui expire 14 lines
+04-20 20:28:55.850  1743  1765 I chatty  : uid=1000(system) android.display expire 20 lines
+04-20 20:29:01.112  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 2 lines
+04-20 20:29:11.194  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 3 lines
+04-20 20:29:12.294  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 1 line
+04-20 20:29:24.554  1743  5994 I chatty  : uid=1000(system) Binder:1743_17 expire 1 line
+04-20 20:29:44.045  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 2 lines
+04-20 20:30:21.213  1743  2383 I chatty  : uid=1000(system) Binder:1743_6 expire 1 line
+04-20 20:30:25.324  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 4 lines
+04-20 20:30:25.385  1743  1765 I chatty  : uid=1000(system) android.display expire 1 line
+04-20 20:30:43.534  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 12 lines
+04-20 20:30:44.228  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 3 lines
+04-20 20:30:51.979  1743  1771 I chatty  : uid=1000(system) android.bg expire 4 lines
+04-20 20:31:13.661  1743  1743 I chatty  : uid=1000 system_server expire 5 lines
+04-20 20:31:35.550  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 2 lines
+04-20 20:32:08.803  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 48 lines
+04-20 20:32:25.183  1743 17022 I chatty  : uid=1000(system) AdbDebuggingMan expire 1 line
+04-20 20:32:25.184  1743  1762 I chatty  : uid=1000(system) android.fg expire 1 line
+04-20 20:38:39.502  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 8 lines
+04-20 20:38:39.830  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 1 line
+04-20 21:08:41.003  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 4 lines
+04-20 21:08:41.195  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 1 line
+04-20 21:33:31.899  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 1 line
+04-20 21:33:31.903  1743  1760 I chatty  : uid=1000(system) Binder:1743_1 expire 5 lines
+04-20 21:39:47.974  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 17 lines
+04-20 21:39:48.744  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 6 lines
+04-20 21:39:50.938  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 5 lines
+04-20 21:39:50.958  1743  2162 I chatty  : uid=1000(system) NetworkWatchlis expire 2 lines
+04-20 21:39:50.972  1743  1743 I chatty  : uid=1000 system_server expire 20 lines
+04-20 21:39:51.453 22073  7475 E ActivityThread: Failed to find provider info for instantapp-dev-manager
+04-20 21:39:58.710  1743  1762 I chatty  : uid=1000(system) android.fg expire 5 lines
+04-20 21:39:58.847  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 8 lines
+04-20 21:39:59.687  1743  2414 I chatty  : uid=1000(system) HwBinder:1743_4 expire 1 line
+04-20 21:39:59.692  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 2 lines
+04-20 21:39:59.700  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 7 lines
+04-20 21:47:14.513  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 20 lines
+04-20 22:08:52.896  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 1 line
+04-20 22:25:27.441  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 3 lines
+04-20 22:25:34.520  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 1 line
+04-20 22:31:26.142  1743  4868 I chatty  : uid=1000(system) Binder:1743_13 expire 1 line
+04-20 23:56:08.817  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-21 00:00:00.861  1743  3657 I chatty  : uid=1000(system) Binder:1743_F expire 7 lines
+04-21 00:18:00.990  1743  1743 I chatty  : uid=1000 system_server expire 3 lines
+04-21 00:18:01.011  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 4 lines
+04-21 00:18:01.019  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 12 lines
+04-21 00:18:01.256  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 16 lines
+04-21 00:18:02.438  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 8 lines
+04-21 00:18:02.932  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 4 lines
+04-21 00:18:03.059 24895 25044 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:18:05.643  1743  2836 I chatty  : uid=1000(system) Binder:1743_9 expire 2 lines
+04-21 00:18:05.921  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 4 lines
+04-21 00:18:05.994  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 2 lines
+04-21 00:18:06.051  1743  4868 I chatty  : uid=1000(system) Binder:1743_13 expire 1 line
+04-21 00:18:06.144  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 16 lines
+04-21 00:18:06.224  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 1 line
+04-21 00:18:08.141 24895 25044 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:18:08.551  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 1 line
+04-21 00:18:10.098  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 1 line
+04-21 00:18:10.102  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 2 lines
+04-21 00:18:13.221 24895 25044 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:18:13.593  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 4 lines
+04-21 00:18:14.614  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 1 line
+04-21 00:18:18.292 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:18:23.342 24895 24913 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:18:28.414 24895 24913 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:18:37.113  1743  1762 I chatty  : uid=1000(system) android.fg expire 2 lines
+04-21 00:18:51.866  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 1 line
+04-21 00:18:51.916 24895 24913 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:20:29.714 24895 24913 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:21:59.699 24895 24913 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:23:31.850 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:25:57.461 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:27:27.446 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:29:13.766 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:31:22.168 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:33:51.444 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:35:37.789 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:36:56.108 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:38:01.219 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:39:30.253 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:41:00.237 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:42:30.338 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:44:25.864 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:45:31.646 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 00:46:31.154 24895 24983 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 01:03:01.091  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 1 line
+04-21 04:05:54.258  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 11 lines
+04-21 04:05:54.780  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 1 line
+04-21 04:05:54.843  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 2 lines
+04-21 04:06:04.224  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 22 lines
+04-21 04:06:09.492  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 3 lines
+04-21 04:06:17.447  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 1 line
+04-21 04:06:17.498  1743  5994 I chatty  : uid=1000(system) Binder:1743_17 expire 2 lines
+04-21 04:06:24.642  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 22 lines
+04-21 04:06:25.048  1743  1762 I chatty  : uid=1000(system) android.fg expire 4 lines
+04-21 04:31:31.469  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 1 line
+04-21 04:56:57.846  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-21 07:00:00.015  1743  1743 I chatty  : uid=1000 system_server expire 10 lines
+04-21 07:08:29.958  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 7 lines
+04-21 07:18:49.044  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 8 lines
+04-21 09:54:34.030  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 5 lines
+04-21 09:54:34.051  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 1 line
+04-21 09:54:35.924 24895 24929 D SystemConfig: Removed unavailable feature android.hardware.sensor.gyroscope
+04-21 09:54:35.931 24895 24929 W SystemConfig: No directory /oem/etc/sysconfig, skipping
+04-21 09:54:35.931 24895 24929 W SystemConfig: No directory /oem/etc/permissions, skipping
+04-21 09:54:36.104 24895 24929 W SystemConfig: No directory /system/etc/motorola/bgintents, skipping
+04-21 09:54:36.104 24895 24929 W SystemConfig: No directory /oem/etc/motorola/bgintents, skipping
+04-21 09:54:36.111 24895 24929 W SystemConfig: No directory /product_services/etc/sysconfig, skipping
+04-21 09:54:36.111 24895 24929 W SystemConfig: No directory /product_services/etc/permissions, skipping
+04-21 09:54:36.111 24895 24929 W SystemConfig: No directory /system/etc/motorola/sysconfig, skipping
+04-21 09:54:36.111 24895 24929 W SystemConfig: No directory /oem/etc/motorola/sysconfig, skipping
+04-21 09:54:36.111 24895 24929 W SystemConfig: No directory /product/etc/motorola/sysconfig, skipping
+04-21 09:54:36.165 24895 24929 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-21 09:54:36.223  1743  2162 I chatty  : uid=1000(system) NetworkWatchlis expire 2 lines
+04-21 09:54:36.230  1743  1743 I chatty  : uid=1000 system_server expire 1 line
+04-21 09:54:36.490  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 8 lines
+04-21 09:54:37.308  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 6 lines
+04-21 09:54:41.756  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 5 lines
+04-21 09:54:52.472  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 1 line
+04-21 09:54:58.867  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 2 lines
+04-21 09:55:03.908  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 14 lines
+04-21 09:58:49.786  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 26 lines
+04-21 10:20:46.259  1743  1771 I chatty  : uid=1000(system) android.bg expire 4 lines
+04-21 11:10:21.544  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 12 lines
+04-21 11:10:47.077  9362  9362 W ActivityThread: serviceCreate starts in 23141 ms, CreateServiceData = CreateServiceData{token=android.os.BinderProxy@543e4f5 className=com.motorola.feedback.quicksettings.FeedBackTileService packageName=com.motorola.help intent=null}
+04-21 11:15:29.560  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 2 lines
+04-21 11:15:29.637  1743  5994 I chatty  : uid=1000(system) Binder:1743_17 expire 2 lines
+04-21 11:15:29.638  1743  2836 I chatty  : uid=1000(system) Binder:1743_9 expire 5 lines
+04-21 11:17:46.251  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 3 lines
+04-21 11:27:30.831  1743  1763 I chatty  : uid=1000(system) android.ui expire 6 lines
+04-21 13:51:21.132  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 11 lines
+04-21 13:51:21.135  1743  1765 I chatty  : uid=1000(system) android.display expire 5 lines
+04-21 14:58:25.502  1743  1743 I chatty  : uid=1000 system_server expire 2 lines
+04-21 14:58:25.513  1743  1762 I chatty  : uid=1000(system) android.fg expire 3 lines
+04-21 15:42:24.585  1743  3384 I chatty  : uid=1000(system) Binder:1743_B expire 1 line
+04-21 15:42:24.773  9636  9636 D ActivityThread: Loading provider contacts;com.android.contacts: com.android.providers.contacts.ContactsProvider2
+04-21 15:42:24.825  1743  2238 I chatty  : uid=1000(system) WifiService expire 1 line
+04-21 15:42:24.826  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 1 line
+04-21 15:42:25.303  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 2 lines
+04-21 15:42:25.413  1743  7290 I chatty  : uid=1000(system) Binder:1743_1A expire 1 line
+04-21 15:42:25.465 24895 24912 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:42:25.496  1743  2838 I chatty  : uid=1000(system) Binder:1743_A expire 2 lines
+04-21 15:42:25.970  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 1 line
+04-21 15:42:26.033  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 4 lines
+04-21 15:42:26.051  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 1 line
+04-21 15:42:26.092  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 1 line
+04-21 15:42:26.472  7126 12944 E ActivityThread: Failed to find provider info for com.motorola.ccc.cce.datausage
+04-21 15:42:27.101  7126 12945 E ActivityThread: Failed to find provider info for com.motorola.ccc.cce.datausage
+04-21 15:42:27.163  7126 12944 E ActivityThread: Failed to find provider info for com.motorola.ccc.cce.datausage
+04-21 15:42:27.974  1743  3657 I chatty  : uid=1000(system) Binder:1743_F expire 4 lines
+04-21 15:42:27.988  1743  1765 I chatty  : uid=1000(system) android.display expire 6 lines
+04-21 15:42:27.994  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 1 line
+04-21 15:42:28.050  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 2 lines
+04-21 15:42:28.150  1743  1763 I chatty  : uid=1000(system) android.ui expire 5 lines
+04-21 15:42:28.151  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 13 lines
+04-21 15:42:28.799  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 5 lines
+04-21 15:42:28.875  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 1 line
+04-21 15:42:28.876  9212  9212 I ActivityThread: Removing dead content provider:android.content.ContentProviderProxy@e54b093
+04-21 15:42:28.885  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 2 lines
+04-21 15:42:28.954  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 4 lines
+04-21 15:42:29.515  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 2 lines
+04-21 15:42:30.243  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 16 lines
+04-21 15:42:30.529  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 9 lines
+04-21 15:42:30.567 24895 25028 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:42:31.242  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 2 lines
+04-21 15:42:34.006  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 3 lines
+04-21 15:42:35.628 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:42:38.088  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 10 lines
+04-21 15:42:40.697 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:42:45.759 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:42:46.097  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 3 lines
+04-21 15:42:46.172  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 2 lines
+04-21 15:42:46.173  1743  2838 I chatty  : uid=1000(system) Binder:1743_A expire 1 line
+04-21 15:42:48.766  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 2 lines
+04-21 15:42:50.820 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:42:56.345  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 4 lines
+04-21 15:42:56.415 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:43:57.361 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:46:05.450 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:47:36.585 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:49:36.722 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:50:46.406 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:51:31.250 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:52:26.573 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:53:51.362 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:54:36.825 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:56:09.004 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:57:16.959 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 15:59:36.904 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 16:01:06.971 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 16:02:45.877 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 16:04:03.702 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 16:05:01.655 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 16:05:27.175  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 1 line
+04-21 16:05:29.233  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 3 lines
+04-21 16:06:37.194 24895 25078 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 18:52:41.061  1743  1764 I chatty  : uid=1000(system) android.io expire 2 lines
+04-21 19:04:13.753  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 8 lines
+04-21 19:04:14.033  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 1 line
+04-21 19:04:14.038  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 4 lines
+04-21 19:04:14.377  7126 12945 E ActivityThread: Failed to find provider info for com.motorola.ccc.cce.datausage
+04-21 19:04:17.238  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 16 lines
+04-21 19:04:17.374  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 4 lines
+04-21 19:04:17.413  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 4 lines
+04-21 19:04:17.780  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 4 lines
+04-21 19:04:17.882  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 6 lines
+04-21 19:04:18.084  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 1 line
+04-21 19:04:18.112  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 6 lines
+04-21 19:04:18.113  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 3 lines
+04-21 19:04:18.113  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 1 line
+04-21 19:04:18.711  1743  3656 I chatty  : uid=1000(system) Binder:1743_E expire 1 line
+04-21 19:04:19.668  1743  3384 I chatty  : uid=1000(system) Binder:1743_B expire 1 line
+04-21 19:04:19.669  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 1 line
+04-21 19:04:20.903  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 4 lines
+04-21 19:04:21.021  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 1 line
+04-21 19:04:21.872  1743  5994 I chatty  : uid=1000(system) Binder:1743_17 expire 6 lines
+04-21 19:04:21.873  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 2 lines
+04-21 19:04:22.380  1743  4868 I chatty  : uid=1000(system) Binder:1743_13 expire 4 lines
+04-21 19:04:22.626  1743  2660 I chatty  : uid=1000(system) android.fg expire 3 lines
+04-21 19:04:22.769  1743  1743 I chatty  : uid=1000 system_server expire 12 lines
+04-21 19:04:22.840  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 2 lines
+04-21 19:04:23.584  1743  7290 I chatty  : uid=1000(system) Binder:1743_1A expire 3 lines
+04-21 19:04:24.193  1743  2836 I chatty  : uid=1000(system) Binder:1743_9 expire 1 line
+04-21 19:04:24.255  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 2 lines
+04-21 19:04:24.266  1743  3657 I chatty  : uid=1000(system) Binder:1743_F expire 3 lines
+04-21 19:04:27.182 24895 11315 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-21 19:04:27.346 24895 24948 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-21 19:04:27.890  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 8 lines
+04-21 19:04:27.891  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 2 lines
+04-21 19:04:27.891  1743  1763 I chatty  : uid=1000(system) android.ui expire 2 lines
+04-21 19:04:27.901  1743  1765 I chatty  : uid=1000(system) android.display expire 3 lines
+04-21 19:04:29.227 10423 11603 D SystemConfig: Removed unavailable feature android.hardware.sensor.gyroscope
+04-21 19:04:29.237 10423 11603 W SystemConfig: No directory /oem/etc/sysconfig, skipping
+04-21 19:04:29.237 10423 11603 W SystemConfig: No directory /oem/etc/permissions, skipping
+04-21 19:04:29.426 10423 11603 W SystemConfig: No directory /system/etc/motorola/bgintents, skipping
+04-21 19:04:29.426 10423 11603 W SystemConfig: No directory /oem/etc/motorola/bgintents, skipping
+04-21 19:04:29.432 10423 11603 W SystemConfig: No directory /product_services/etc/sysconfig, skipping
+04-21 19:04:29.432 10423 11603 W SystemConfig: No directory /product_services/etc/permissions, skipping
+04-21 19:04:29.433 10423 11603 W SystemConfig: No directory /system/etc/motorola/sysconfig, skipping
+04-21 19:04:29.433 10423 11603 W SystemConfig: No directory /oem/etc/motorola/sysconfig, skipping
+04-21 19:04:29.433 10423 11603 W SystemConfig: No directory /product/etc/motorola/sysconfig, skipping
+04-21 19:04:29.811  1743  1771 I chatty  : uid=1000(system) android.bg expire 1 line
+04-21 19:04:31.169  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 2 lines
+04-21 19:04:36.994  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 2 lines
+04-21 19:04:37.453  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 1 line
+04-21 19:04:40.780  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 2 lines
+04-21 19:04:41.426  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 2 lines
+04-21 19:04:41.503  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 2 lines
+04-21 19:04:44.605  1743  1762 I chatty  : uid=1000(system) android.fg expire 1 line
+04-21 19:04:44.614  1743  4868 I chatty  : uid=1000(system) Binder:1743_13 expire 3 lines
+04-21 19:04:44.666  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 9 lines
+04-21 19:04:44.666  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 1 line
+04-21 19:04:44.670  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 16 lines
+04-21 19:04:48.763  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 2 lines
+04-21 19:04:48.827  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 1 line
+04-21 19:04:54.896  7126  8884 E ActivityThread: Failed to find provider info for com.motorola.ccc.cce.datausage
+04-21 19:04:55.433  7126 12838 E ActivityThread: Failed to find provider info for com.motorola.ccc.cce.datausage
+04-21 19:05:18.286  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 6 lines
+04-21 19:05:31.414  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 5 lines
+04-21 19:05:31.420  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 6 lines
+04-21 19:06:41.272 22073 22073 W ActivityThread: serviceStart lasts for 7444 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=74 args=Intent { act=com.google.android.location.internal.action.FLP_AR_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-21 19:06:41.272 22073 22073 W ActivityThread: serviceStart starts in 7434 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=75 args=Intent { act=com.google.android.location.internal.action.AR_TRANSITION_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-21 19:07:41.417 22073 22073 W ActivityThread: serviceStart lasts for 5538 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=77 args=Intent { act=com.google.android.location.internal.action.AR_TRANSITION_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-21 19:07:50.673  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 10 lines
+04-21 19:07:50.892  1743  1771 I chatty  : uid=1000(system) android.bg expire 5 lines
+04-21 19:07:50.936  1743  2162 I chatty  : uid=1000(system) NetworkWatchlis expire 2 lines
+04-21 19:07:51.285  1743  1743 I chatty  : uid=1000 system_server expire 5 lines
+04-21 19:08:37.378  1743  2836 I chatty  : uid=1000(system) Binder:1743_9 expire 3 lines
+04-21 19:09:41.587 22073 22073 W ActivityThread: serviceStart lasts for 3035 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=80 args=Intent { act=com.google.android.location.internal.action.FLP_AR_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-21 19:09:41.587 22073 22073 W ActivityThread: serviceStart starts in 3028 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=81 args=Intent { act=com.google.android.location.internal.action.AR_TRANSITION_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-21 19:10:41.489 22073 22073 W ActivityThread: serviceStart lasts for 2343 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=82 args=Intent { act=com.google.android.location.internal.action.FLP_AR_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-21 19:10:41.490 22073 22073 W ActivityThread: serviceStart starts in 2328 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=83 args=Intent { act=com.google.android.location.internal.action.AR_TRANSITION_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-21 19:12:42.304  1743  3346 I chatty  : uid=1000(system) backup-0 expire 5 lines
+04-21 19:12:42.415  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 6 lines
+04-21 19:12:51.747  1743  1765 I chatty  : uid=1000(system) android.display expire 2 lines
+04-21 19:13:18.175  7126  7126 W ActivityThread: serviceCreate starts in 6416 ms, CreateServiceData = CreateServiceData{token=android.os.BinderProxy@dbbee3f className=com.motorola.ccc.ota.ui.NotificationService packageName=com.motorola.ccc.ota intent=null}
+04-21 19:13:18.180  7126  7126 W ActivityThread: serviceStart starts in 6420 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@dbbee3f startId=1 args=Intent { cmp=com.motorola.ccc.ota/.ui.NotificationService (has extras) }}
+04-21 19:13:43.226  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 2 lines
+04-21 19:13:43.248 24895 24912 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:13:46.064 12074 12074 D ActivityThread: Loading provider contacts;com.android.contacts: com.android.providers.contacts.ContactsProvider2
+04-21 19:13:46.073  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 1 line
+04-21 19:13:47.523  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 2 lines
+04-21 19:13:47.572  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 11 lines
+04-21 19:13:47.941  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 5 lines
+04-21 19:13:48.001  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 2 lines
+04-21 19:13:48.001  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 1 line
+04-21 19:13:48.324 24895 24912 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:13:49.152  1743  3656 I chatty  : uid=1000(system) Binder:1743_E expire 4 lines
+04-21 19:13:52.208  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 1 line
+04-21 19:14:01.999 12342 12342 W ActivityThread: serviceCreate starts in 9702 ms, CreateServiceData = CreateServiceData{token=android.os.BinderProxy@b214176 className=com.google.android.gms.chimera.UiIntentOperationService packageName=com.google.android.gms intent=null}
+04-21 19:14:02.007 12342 12342 W ActivityThread: serviceStart starts in 9711 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@b214176 startId=1 args=Intent { act=com.google.android.gms.phenotype.UPDATE flg=0x30 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.UiIntentOperationService (has extras) }}
+04-21 19:14:02.009 12342 12342 W ActivityThread: serviceStart starts in 9713 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@b214176 startId=2 args=Intent { act=com.google.android.gms.phenotype.UPDATE flg=0x30 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.UiIntentOperationService (has extras) }}
+04-21 19:14:03.257 12342 12342 W ActivityThread: serviceStart starts in 10961 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@b214176 startId=3 args=Intent { act=com.google.android.gms.phenotype.UPDATE flg=0x30 pkg=com.google.android.gms cmp=com.google.android.gms/.chimera.UiIntentOperationService (has extras) }}
+04-21 19:14:03.667  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 2 lines
+04-21 19:14:41.412 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:15:33.356 24895 24912 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:17:11.987  1743  4868 I chatty  : uid=1000(system) Binder:1743_13 expire 3 lines
+04-21 19:17:12.037 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:17:18.927  1743  2836 I chatty  : uid=1000(system) Binder:1743_9 expire 1 line
+04-21 19:17:18.928  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 2 lines
+04-21 19:17:18.933  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 3 lines
+04-21 19:17:18.938  1743  2383 I chatty  : uid=1000(system) Binder:1743_6 expire 1 line
+04-21 19:17:47.880 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:18:02.118  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 1 line
+04-21 19:18:04.118  1743  1743 I chatty  : uid=1000 system_server expire 10 lines
+04-21 19:18:04.119  1743  1762 I chatty  : uid=1000(system) android.fg expire 11 lines
+04-21 19:18:32.478  1743 17022 I chatty  : uid=1000(system) AdbDebuggingMan expire 1 line
+04-21 19:18:34.856  1743  1763 I chatty  : uid=1000(system) android.ui expire 6 lines
+04-21 19:18:34.942 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:18:35.002  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 4 lines
+04-21 19:18:35.004  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 2 lines
+04-21 19:18:35.318  1743  1765 I chatty  : uid=1000(system) android.display expire 5 lines
+04-21 19:18:45.012 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:19:30.178 24895 11591 I chatty  : uid=10156(com.google.android.gms) Binder:24895_E identical 4 lines
+04-21 19:19:41.245 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:19:44.974  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 7 lines
+04-21 19:19:45.389  1743  2157 I chatty  : uid=1000(system) InputReader expire 1 line
+04-21 19:19:45.413  1743  3657 I chatty  : uid=1000(system) Binder:1743_F expire 2 lines
+04-21 19:19:45.547  1743  1766 I chatty  : uid=1000(system) android.anim expire 7 lines
+04-21 19:19:45.556  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 1 line
+04-21 19:19:48.385 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:19:51.494  1743  1743 I chatty  : uid=1000 system_server expire 2 lines
+04-21 19:19:51.524  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 1 line
+04-21 19:19:51.529  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 5 lines
+04-21 19:19:51.654  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 10 lines
+04-21 19:19:53.458 24895 24912 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:19:54.722  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 10 lines
+04-21 19:19:54.862  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 7 lines
+04-21 19:19:54.882  1743  1766 I chatty  : uid=1000(system) android.anim expire 11 lines
+04-21 19:19:55.308  1743  3384 I chatty  : uid=1000(system) Binder:1743_B expire 3 lines
+04-21 19:19:55.387  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 6 lines
+04-21 19:19:55.388  1743  1762 I chatty  : uid=1000(system) android.fg expire 1 line
+04-21 19:19:55.860  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 4 lines
+04-21 19:19:58.479 24895  9290 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:19:59.577  1743  7290 I chatty  : uid=1000(system) Binder:1743_1A expire 2 lines
+04-21 19:20:03.529 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:20:08.599 24895  9290 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:20:13.638 24895  9290 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:20:18.711 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:20:21.858  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 1 line
+04-21 19:20:23.796 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:20:28.855 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:20:28.871  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 4 lines
+04-21 19:20:28.876  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 1 line
+04-21 19:20:33.916 24895 24913 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:20:38.998 24895 24913 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:20:52.389  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 4 lines
+04-21 19:22:20.490  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-21 19:23:27.620  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 1 line
+04-21 19:23:27.620  1743  1760 I chatty  : uid=1000(system) Binder:1743_1 expire 1 line
+04-21 19:23:27.621  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 1 line
+04-21 19:23:27.825  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 16 lines
+04-21 19:23:28.733  1743  2383 I chatty  : uid=1000(system) Binder:1743_6 expire 1 line
+04-21 19:23:28.820  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 1 line
+04-21 19:23:28.903  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 4 lines
+04-21 19:23:54.330  1743  2836 I chatty  : uid=1000(system) Binder:1743_9 expire 1 line
+04-21 19:24:31.055  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 3 lines
+04-21 19:24:31.058  1743  1765 I chatty  : uid=1000(system) android.display expire 1 line
+04-21 19:24:32.175  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 6 lines
+04-21 19:24:32.372  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 7 lines
+04-21 19:24:32.769  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 4 lines
+04-21 19:24:58.151  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 18 lines
+04-21 19:28:22.426  1743  4868 I chatty  : uid=1000(system) Binder:1743_13 expire 2 lines
+04-21 19:28:22.491  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 1 line
+04-21 19:28:22.494  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 4 lines
+04-21 19:29:34.497  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 4 lines
+04-21 19:29:34.606  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 1 line
+04-21 19:32:08.168  1743  1743 I chatty  : uid=1000 system_server expire 1 line
+04-21 19:39:48.094  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-21 19:40:11.305  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 1 line
+04-21 19:40:19.936 12478 15018 D SystemConfig: Removed unavailable feature android.hardware.sensor.gyroscope
+04-21 19:40:19.947 12478 15018 W SystemConfig: No directory /oem/etc/sysconfig, skipping
+04-21 19:40:19.947 12478 15018 W SystemConfig: No directory /oem/etc/permissions, skipping
+04-21 19:40:20.180 12478 15018 W SystemConfig: No directory /system/etc/motorola/bgintents, skipping
+04-21 19:40:20.181 12478 15018 W SystemConfig: No directory /oem/etc/motorola/bgintents, skipping
+04-21 19:40:20.197 12478 15018 W SystemConfig: No directory /product_services/etc/sysconfig, skipping
+04-21 19:40:20.197 12478 15018 W SystemConfig: No directory /product_services/etc/permissions, skipping
+04-21 19:40:20.197 12478 15018 W SystemConfig: No directory /system/etc/motorola/sysconfig, skipping
+04-21 19:40:20.197 12478 15018 W SystemConfig: No directory /oem/etc/motorola/sysconfig, skipping
+04-21 19:40:20.197 12478 15018 W SystemConfig: No directory /product/etc/motorola/sysconfig, skipping
+04-21 19:40:21.154  1743  1788 I chatty  : uid=1000(system) PackageManager expire 45 lines
+04-21 19:40:21.503  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 24 lines
+04-21 19:40:21.516  1743  2078 I chatty  : uid=1000(system) AccountManagerS expire 1 line
+04-21 19:40:21.529  1743  2660 I chatty  : uid=1000(system) android.fg expire 1 line
+04-21 19:40:21.578  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 5 lines
+04-21 19:40:21.600  1743  1743 I chatty  : uid=1000 system_server expire 10 lines
+04-21 19:40:21.742  1743  7290 I chatty  : uid=1000(system) Binder:1743_1A expire 1 line
+04-21 19:40:21.748  1743  1762 I chatty  : uid=1000(system) android.fg expire 2 lines
+04-21 19:40:21.768  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 3 lines
+04-21 19:40:22.149  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 6 lines
+04-21 19:40:22.191  1743  1766 I chatty  : uid=1000(system) android.anim expire 7 lines
+04-21 19:40:22.933  1743  2838 I chatty  : uid=1000(system) Binder:1743_A expire 1 line
+04-21 19:40:33.045  1743  2246 I chatty  : uid=1000(system) NsdService expire 5 lines
+04-21 19:40:43.230 15255 15255 D ActivityThread: Loading provider contacts;com.android.contacts: com.android.providers.contacts.ContactsProvider2
+04-21 19:40:43.565  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 11 lines
+04-21 19:40:43.993  2308  2308 V DeadZone: consuming errant click: (78.890434,9.049316)
+04-21 19:40:43.994  2308  2308 V DeadZone: consuming errant click: (78.890434,9.049316)
+04-21 19:40:53.855  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 1 line
+04-21 19:40:53.906  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 1 line
+04-21 19:40:53.907  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 2 lines
+04-21 19:41:04.262  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 6 lines
+04-21 19:41:05.184  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 1 line
+04-21 19:41:21.190  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 14 lines
+04-21 19:41:29.905  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 6 lines
+04-21 19:42:22.643  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-21 19:50:33.978  1743  1760 I chatty  : uid=1000(system) Binder:1743_1 expire 5 lines
+04-21 19:50:34.062  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 3 lines
+04-21 19:50:34.064  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 4 lines
+04-21 19:50:34.076  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 1 line
+04-21 19:50:49.056  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 3 lines
+04-21 19:53:34.047  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 2 lines
+04-21 19:53:34.050  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 1 line
+04-21 19:53:34.050  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 1 line
+04-21 19:53:34.057  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 1 line
+04-21 19:54:32.183  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 3 lines
+04-21 19:54:32.686  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 4 lines
+04-21 19:54:32.757 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:54:37.791 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:54:39.906  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 7 lines
+04-21 19:54:42.879 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:54:44.324  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 5 lines
+04-21 19:54:47.975 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:54:53.045 24895  9063 I chatty  : uid=10156(com.google.android.gms) Binder:24895_B identical 14 lines
+04-21 19:54:58.110 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:55:03.174 24895 24952 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:55:08.250 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:55:38.620 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:55:43.692 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:56:29.287 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-21 19:56:32.742  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 1 line
+04-21 20:00:35.214  1743  1766 I chatty  : uid=1000(system) android.anim expire 1 line
+04-21 20:00:35.978  1743  1763 I chatty  : uid=1000(system) android.ui expire 2 lines
+04-21 20:00:35.980  1743  1743 I chatty  : uid=1000 system_server expire 2 lines
+04-21 20:00:36.438  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 6 lines
+04-21 20:00:36.466  1743 16857 I chatty  : uid=1000 system_server expire 1 line
+04-21 20:00:36.480  1743  1765 I chatty  : uid=1000(system) android.display expire 2 lines
+04-21 20:00:36.724  1743  1762 I chatty  : uid=1000(system) android.fg expire 4 lines
+04-21 20:00:37.274  1743  2246 I chatty  : uid=1000(system) NsdService expire 2 lines
+04-21 20:00:37.323  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 4 lines
+04-21 20:00:37.356  1743  1743 I chatty  : uid=1000 system_server expire 9 lines
+04-21 20:00:37.419  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 5 lines
+04-21 20:00:37.597  1743  1765 I chatty  : uid=1000(system) android.display expire 15 lines
+04-21 20:00:37.621  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 1 line
+04-21 20:00:37.646  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 2 lines
+04-21 20:00:38.306  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 2 lines
+04-21 20:00:38.381  1743  1766 I chatty  : uid=1000(system) android.anim expire 1 line
+04-21 20:00:54.611  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 2 lines
+04-21 20:01:47.530  1743  1771 I chatty  : uid=1000(system) android.bg expire 4 lines
+04-21 20:02:06.910  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 38 lines
+04-21 20:02:06.913  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 4 lines
+04-21 20:02:06.914  1743  1763 I chatty  : uid=1000(system) android.ui expire 10 lines
+04-21 20:02:51.695  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 2 lines
+04-21 20:03:11.233  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 8 lines
+04-21 20:03:17.047  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 2 lines
+04-21 20:03:17.100  1743  1765 I chatty  : uid=1000(system) android.display expire 1 line
+04-21 20:03:31.623  1743  1771 I chatty  : uid=1000(system) android.bg expire 6 lines
+04-21 20:03:51.802  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 4 lines
+04-21 20:03:51.805  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 5 lines
+04-21 20:03:51.810  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 5 lines
+04-21 20:03:51.831  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 32 lines
+04-21 20:04:18.782  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 24 lines
+04-21 20:04:52.013  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 3 lines
+04-21 20:08:55.551  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 2 lines
+04-21 20:09:52.822  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 2 lines
+04-21 20:11:53.108  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 3 lines
+04-21 20:19:59.584  1743  2126 I chatty  : uid=1000(system) AlarmManager expire 4 lines
+04-21 20:20:36.048  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 1 line
+04-21 20:27:42.436  1743  1743 I chatty  : uid=1000 system_server expire 2 lines
+04-21 20:28:21.708  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 35 lines
+04-21 20:37:45.696  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 25 lines
+04-21 20:37:45.873  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 1 line
+04-21 20:37:45.887  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 8 lines
+04-21 20:37:45.944  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 1 line
+04-21 20:47:29.016  1743  1771 I chatty  : uid=1000(system) android.bg expire 8 lines
+04-21 21:08:51.720  1743  1762 I chatty  : uid=1000(system) android.fg expire 2 lines
+04-21 21:08:51.784  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 9 lines
+04-21 21:08:55.348  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 1 line
+04-21 21:08:55.355  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 1 line
+04-21 21:09:21.908  1743  2414 I chatty  : uid=1000(system) HwBinder:1743_4 expire 1 line
+04-21 21:20:49.407  1743  1765 I chatty  : uid=1000(system) android.display expire 1 line
+04-21 21:20:49.410  1743  1763 I chatty  : uid=1000(system) android.ui expire 3 lines
+04-21 21:20:53.942  1743 17022 I chatty  : uid=1000(system) AdbDebuggingMan expire 1 line
+04-21 21:59:40.652  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 6 lines
+04-21 21:59:40.806 24517 24517 D ActivityThread: Loading provider contacts;com.android.contacts: com.android.providers.contacts.ContactsProvider2
+04-21 21:59:41.357  1743  5994 I chatty  : uid=1000(system) Binder:1743_17 expire 1 line
+04-21 21:59:41.415  1743  3384 I chatty  : uid=1000(system) Binder:1743_B expire 4 lines
+04-21 21:59:43.293  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 3 lines
+04-21 21:59:43.363 24895 24929 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-21 21:59:45.465 24895 15116 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-21 21:59:45.659 24895 15116 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/s/dl-AdsFdrDynamite.integ_210890500100000.apk Binary XML file line #5
+04-21 21:59:45.747 24895 15116 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-21 21:59:45.790 24895 15116 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/00000018/dl-AdsFdrDynamite.integ_210890500100000.apk Binary XML file line #5
+04-21 21:59:46.113  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 6 lines
+04-21 21:59:48.369  1743  5895 I chatty  : uid=1000(system) Binder:1743_16 expire 3 lines
+04-21 21:59:51.162  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 10 lines
+04-21 22:00:00.002  1743  1743 I chatty  : uid=1000 system_server expire 13 lines
+04-21 22:00:10.612  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 30 lines
+04-21 22:00:18.825  1743  1762 I chatty  : uid=1000(system) android.fg expire 2 lines
+04-21 22:00:41.836  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 13 lines
+04-21 22:03:46.171  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 10 lines
+04-21 22:03:46.181  1743  1763 I chatty  : uid=1000(system) android.ui expire 7 lines
+04-21 22:08:39.050  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 3 lines
+04-21 23:17:28.679  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-21 23:50:31.025  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 1 line
+04-21 23:50:31.071  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 1 line
+04-21 23:50:38.042  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 1 line
+04-21 23:50:52.125  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 4 lines
+04-22 00:00:02.738  1743  5994 I chatty  : uid=1000(system) Binder:1743_17 expire 1 line
+04-22 00:12:43.150  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 3 lines
+04-22 00:12:56.037  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 1 line
+04-22 00:12:56.038  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 1 line
+04-22 00:13:06.458  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 4 lines
+04-22 00:41:47.452  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 13 lines
+04-22 00:52:58.426  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 4 lines
+04-22 01:20:15.109  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 2 lines
+04-22 02:21:04.110  1743  1762 I chatty  : uid=1000(system) android.fg expire 6 lines
+04-22 02:35:33.178  3268  3268 W ActivityThread: serviceCreate lasts for 5127 ms, CreateServiceData = CreateServiceData{token=android.os.BinderProxy@7c088f4 className=com.motorola.motocare.internal.batterystats.BatteryStatsIntentService packageName=com.motorola.motocare.internal intent=null}
+04-22 02:35:33.179  3268  3268 W ActivityThread: serviceStart starts in 5135 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@7c088f4 startId=1 args=Intent { act=com.motorola.motocare.INTENT_PERFORM_ACTION flg=0x10 cmp=com.motorola.motocare.internal/.batterystats.BatteryStatsIntentService (has extras) }}
+04-22 03:49:37.551  1743  1743 I chatty  : uid=1000 system_server expire 15 lines
+04-22 03:49:37.723  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 10 lines
+04-22 03:49:37.737  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 6 lines
+04-22 03:49:37.741  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 7 lines
+04-22 03:49:37.930  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 10 lines
+04-22 03:49:38.174 25627 25627 D ActivityThread: Loading provider contacts;com.android.contacts: com.android.providers.contacts.ContactsProvider2
+04-22 03:49:38.195  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 3 lines
+04-22 03:49:38.575 24895  9063 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:49:41.521  1743  7290 I chatty  : uid=1000(system) Binder:1743_1A expire 7 lines
+04-22 03:49:42.002  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 2 lines
+04-22 03:49:42.111  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 3 lines
+04-22 03:49:42.202  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 6 lines
+04-22 03:49:42.202  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 2 lines
+04-22 03:49:43.655 24895 11573 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:49:44.002  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 2 lines
+04-22 03:49:48.731 24895 11573 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:49:53.794 24895 11573 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:49:58.851 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:50:00.497  1743  2838 I chatty  : uid=1000(system) Binder:1743_A expire 2 lines
+04-22 03:50:03.875  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 2 lines
+04-22 03:50:03.918 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:50:08.085  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 9 lines
+04-22 03:50:18.630  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 11 lines
+04-22 03:50:30.389  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 1 line
+04-22 03:50:33.073 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:52:30.491 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:54:21.041 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:55:50.477 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:57:39.002 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 03:59:20.612 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:00:52.939 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:02:19.108 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:04:58.606 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:07:19.228 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:08:29.349 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:09:42.679 24895 24911 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:11:21.017 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:13:49.347 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:16:01.193 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:18:30.114 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:19:51.262 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:22:11.287 24895 11591 W Binder  : reply too large data on java level: InterfaceDescriptor = null, code = 46
+04-22 04:43:20.398 25983 25983 W ActivityThread: serviceCreate starts in 39253 ms, CreateServiceData = CreateServiceData{token=android.os.BinderProxy@543e4f5 className=com.motorola.feedback.quicksettings.FeedBackTileService packageName=com.motorola.help intent=null}
+04-22 04:57:52.482  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-22 07:08:52.303  1743  2039 I chatty  : uid=1000(system) Binder:1743_3 expire 7 lines
+04-22 07:09:46.664  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 2 lines
+04-22 07:10:46.348  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 10 lines
+04-22 07:41:26.113  3268  3268 W ActivityThread: serviceCreate starts in 8328 ms, CreateServiceData = CreateServiceData{token=android.os.BinderProxy@f6ef73c className=com.motorola.motocare.internal.batterystats.BatteryStatsIntentService packageName=com.motorola.motocare.internal intent=null}
+04-22 07:41:26.119  3268  3268 W ActivityThread: serviceStart starts in 8334 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@f6ef73c startId=1 args=Intent { act=com.motorola.motocare.INTENT_PERFORM_ACTION flg=0x10 cmp=com.motorola.motocare.internal/.batterystats.BatteryStatsIntentService (has extras) }}
+04-22 09:43:41.665  1743  1743 I chatty  : uid=1000 system_server expire 10 lines
+04-22 09:43:41.907  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 24 lines
+04-22 09:43:42.051  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 18 lines
+04-22 09:43:42.167  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 3 lines
+04-22 09:43:42.429  1743  4939 I chatty  : uid=1000(system) Binder:1743_14 expire 5 lines
+04-22 09:43:43.155  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 2 lines
+04-22 09:43:43.201  1743  4868 I chatty  : uid=1000(system) Binder:1743_13 expire 1 line
+04-22 09:43:43.442  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 2 lines
+04-22 09:43:43.450  1743  4798 I chatty  : uid=1000(system) Binder:1743_12 expire 2 lines
+04-22 09:43:43.451  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 4 lines
+04-22 09:43:43.501  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 3 lines
+04-22 09:43:45.007  1743  2162 I chatty  : uid=1000(system) NetworkWatchlis expire 2 lines
+04-22 09:43:45.712  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 4 lines
+04-22 09:43:45.906  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 2 lines
+04-22 09:43:46.041  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 2 lines
+04-22 09:43:46.059 24895 27892 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-22 09:43:46.140 24895 27892 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/00000018/dl-AdsFdrDynamite.integ_210890500100000.apk Binary XML file line #5
+04-22 09:43:46.261  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 2 lines
+04-22 09:43:46.317  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 3 lines
+04-22 09:43:46.346  1743  3656 I chatty  : uid=1000(system) Binder:1743_E expire 3 lines
+04-22 09:43:47.410  1743 10153 I chatty  : uid=1000(system) Binder:1743_1C expire 3 lines
+04-22 09:43:47.776 24895 26531 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-22 09:43:47.830 24895 26531 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/00000018/dl-AdsFdrDynamite.integ_210890500100000.apk Binary XML file line #5
+04-22 09:43:47.948 24895 24950 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/0000000a/AdsDynamite.apk Binary XML file line #5
+04-22 09:43:48.005 24895 24950 W PackageParser: Unknown element under <manifest>: queries at /data/user_de/0/com.google.android.gms/app_chimera/m/00000018/dl-AdsFdrDynamite.integ_210890500100000.apk Binary XML file line #5
+04-22 09:43:53.786  1743  9612 I chatty  : uid=1000(system) Binder:1743_1B expire 2 lines
+04-22 09:43:53.835  1743  3398 I chatty  : uid=1000(system) Binder:1743_D expire 4 lines
+04-22 09:43:57.809  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 1 line
+04-22 09:43:57.886  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 2 lines
+04-22 09:44:01.264  1743  2836 I chatty  : uid=1000(system) Binder:1743_9 expire 1 line
+04-22 09:44:01.597  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 1 line
+04-22 09:44:01.635  1743  7290 I chatty  : uid=1000(system) Binder:1743_1A expire 2 lines
+04-22 09:44:11.644  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 1 line
+04-22 09:44:13.328  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 2 lines
+04-22 09:44:13.414  1743  1760 I chatty  : uid=1000(system) Binder:1743_1 expire 5 lines
+04-22 09:45:42.482  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 24 lines
+04-22 09:45:42.491  1743  1763 I chatty  : uid=1000(system) android.ui expire 13 lines
+04-22 09:45:42.532  1743  1765 I chatty  : uid=1000(system) android.display expire 17 lines
+04-22 09:45:46.751  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 2 lines
+04-22 09:45:47.563  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 9 lines
+04-22 09:45:54.675  1743  2233 I chatty  : uid=1000(system) Binder:1743_5 expire 4 lines
+04-22 09:46:04.177  1743  1743 I chatty  : uid=1000 system_server expire 12 lines
+04-22 09:46:07.386  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 4 lines
+04-22 09:46:10.208 22073 22073 W ActivityThread: serviceStart lasts for 2822 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=130 args=Intent { act=com.google.android.location.internal.action.FLP_AR_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-22 09:46:10.208 22073 22073 W ActivityThread: serviceStart starts in 2817 ms, ServiceArgsData = ServiceArgsData{token=android.os.BinderProxy@18cdd25 startId=131 args=Intent { act=com.google.android.location.internal.action.AR_TRANSITION_RESULT pkg=com.google.android.gms cmp=com.google.android.gms/com.google.android.location.internal.PendingIntentCallbackService (has extras) }}
+04-22 09:46:10.214  1743  1761 I chatty  : uid=1000(system) Binder:1743_2 expire 2 lines
+04-22 09:46:12.082  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 29 lines
+04-22 09:46:14.199  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 1 line
+04-22 09:47:02.139  1743  2157 I chatty  : uid=1000(system) InputReader expire 2 lines
+04-22 09:47:02.144  1743  1762 I chatty  : uid=1000(system) android.fg expire 5 lines
+04-22 09:47:02.224  1743  4666 I chatty  : uid=1000(system) Binder:1743_11 expire 2 lines
+04-22 09:47:02.251  1743  1766 I chatty  : uid=1000(system) android.anim expire 2 lines
+04-22 09:47:02.709  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 5 lines
+04-22 09:47:15.583  1743  5994 I chatty  : uid=1000(system) Binder:1743_17 expire 1 line
+04-22 09:47:15.583  1743  1762 I chatty  : uid=1000(system) android.fg expire 4 lines
+04-22 09:47:15.590  1743  1782 I chatty  : uid=1000(system) PowerManagerSer expire 2 lines
+04-22 09:47:15.817  1743  1763 I chatty  : uid=1000(system) android.ui expire 1 line
+04-22 09:47:15.820  1743  1743 I chatty  : uid=1000 system_server expire 12 lines
+04-22 09:47:17.014  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 3 lines
+04-22 09:47:17.117  1743  1766 I chatty  : uid=1000(system) android.anim expire 3 lines
+04-22 09:47:17.163  1743  1765 I chatty  : uid=1000(system) android.display expire 1 line
+04-22 09:47:17.174  1743  3657 I chatty  : uid=1000(system) Binder:1743_F expire 4 lines
+04-22 09:47:17.175  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 27 lines
+04-22 09:47:17.565  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 1 line
+04-22 09:47:18.201  1743 17022 I chatty  : uid=1000(system) AdbDebuggingMan expire 1 line
+04-22 09:47:42.228  1743  2126 I chatty  : uid=1000(system) AlarmManager expire 1 line
+04-22 09:47:53.814  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 2 lines
+04-22 09:49:00.612  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 1 line
+04-22 09:49:10.856 26404 27520 D SystemConfig: Removed unavailable feature android.hardware.sensor.gyroscope
+04-22 09:49:10.865 26404 27520 W SystemConfig: No directory /oem/etc/sysconfig, skipping
+04-22 09:49:10.866 26404 27520 W SystemConfig: No directory /oem/etc/permissions, skipping
+04-22 09:49:11.098 26404 27520 W SystemConfig: No directory /system/etc/motorola/bgintents, skipping
+04-22 09:49:11.098 26404 27520 W SystemConfig: No directory /oem/etc/motorola/bgintents, skipping
+04-22 09:49:11.108 26404 27520 W SystemConfig: No directory /product_services/etc/sysconfig, skipping
+04-22 09:49:11.108 26404 27520 W SystemConfig: No directory /product_services/etc/permissions, skipping
+04-22 09:49:11.109 26404 27520 W SystemConfig: No directory /system/etc/motorola/sysconfig, skipping
+04-22 09:49:11.109 26404 27520 W SystemConfig: No directory /oem/etc/motorola/sysconfig, skipping
+04-22 09:49:11.109 26404 27520 W SystemConfig: No directory /product/etc/motorola/sysconfig, skipping
+04-22 09:49:12.168  1743  1788 I chatty  : uid=1000(system) PackageManager expire 45 lines
+04-22 09:49:12.388  1743  2078 I chatty  : uid=1000(system) AccountManagerS expire 1 line
+04-22 09:49:12.413  1743  2660 I chatty  : uid=1000(system) android.fg expire 1 line
+04-22 09:49:12.559  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 2 lines
+04-22 09:49:13.224  1743  4868 I chatty  : uid=1000(system) Binder:1743_13 expire 8 lines
+04-22 09:49:13.258  1743  1762 I chatty  : uid=1000(system) android.fg expire 1 line
+04-22 09:49:13.270  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 8 lines
+04-22 09:49:13.274  1743  1766 I chatty  : uid=1000(system) android.anim expire 11 lines
+04-22 09:49:13.633  1743 11436 I chatty  : uid=1000(system) Binder:1743_1E expire 3 lines
+04-22 09:49:13.797  1743 11433 I chatty  : uid=1000(system) Binder:1743_1D expire 11 lines
+04-22 09:49:13.991  1743  7290 I chatty  : uid=1000(system) Binder:1743_1A expire 3 lines
+04-22 09:49:27.888  1743  2232 I chatty  : uid=1000(system) Binder:1743_4 expire 1 line
+04-22 09:49:29.375  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 2 lines
+04-22 09:49:43.521  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 5 lines
+04-22 09:49:43.694  1743  3656 I chatty  : uid=1000(system) Binder:1743_E expire 1 line
+04-22 09:49:43.695  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 2 lines
+04-22 09:49:43.695  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 2 lines
+04-22 09:49:56.689  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 10 lines
+04-22 09:49:57.388  1743  1743 I chatty  : uid=1000 system_server expire 8 lines
+04-22 09:50:00.375  2308  2308 V DeadZone: consuming errant click: (61.91401,6.0512695)
+04-22 09:50:00.376  2308  2308 V DeadZone: consuming errant click: (61.91401,6.0512695)
+04-22 09:50:00.961  2308  2308 V DeadZone: consuming errant click: (47.933426,12.047363)
+04-22 09:50:00.962  2308  2308 V DeadZone: consuming errant click: (47.933426,12.047363)
+04-22 09:50:43.703  1743  2383 I chatty  : uid=1000(system) Binder:1743_6 expire 2 lines
+04-22 09:50:50.910  1743  2246 I chatty  : uid=1000(system) NsdService expire 7 lines
+04-22 09:50:51.651 27924 27924 D ActivityThread: Loading provider contacts;com.android.contacts: com.android.providers.contacts.ContactsProvider2
+04-22 09:51:03.072  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 5 lines
+04-22 09:52:29.295  1743  1771 I chatty  : uid=1000(system) android.bg expire 2 lines
+04-22 09:53:26.645  1743  7056 I chatty  : uid=1000(system) Binder:1743_19 expire 5 lines
+04-22 09:58:22.289  1743  1765 I chatty  : uid=1000(system) android.display expire 1 line
+04-22 09:58:33.755  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 1 line
+04-22 09:58:42.599  1743  1788 I chatty  : uid=1000(system) PackageManager expire 45 lines
+04-22 09:58:42.950  1743  2078 I chatty  : uid=1000(system) AccountManagerS expire 1 line
+04-22 09:58:42.957  1743  2660 I chatty  : uid=1000(system) android.fg expire 1 line
+04-22 09:58:42.969  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 24 lines
+04-22 09:58:43.041  1743 12220 I chatty  : uid=1000(system) Binder:1743_20 expire 1 line
+04-22 09:58:43.172  1743  1743 I chatty  : uid=1000 system_server expire 18 lines
+04-22 09:58:43.196  1743  1762 I chatty  : uid=1000(system) android.fg expire 2 lines
+04-22 09:58:43.215  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 3 lines
+04-22 09:58:43.518  1743 11968 I chatty  : uid=1000(system) Binder:1743_1F expire 5 lines
+04-22 09:58:43.556  1743  1766 I chatty  : uid=1000(system) android.anim expire 11 lines
+04-22 09:58:43.557  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 1 line
+04-22 09:58:43.911  1743  3392 I chatty  : uid=1000(system) Binder:1743_C expire 1 line
+04-22 09:58:58.303  1743  4961 I chatty  : uid=1000(system) Binder:1743_15 expire 2 lines
+04-22 09:58:58.386  1743  2244 I chatty  : uid=1000(system) ConnectivitySer expire 1 line
+04-22 09:58:58.386  1743  6519 I chatty  : uid=1000(system) Binder:1743_18 expire 2 lines
+04-22 09:58:58.886  1743  1765 I chatty  : uid=1000(system) android.display expire 2 lines
+04-22 09:59:09.649  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 11 lines
+04-22 10:00:15.434  1743  2246 I chatty  : uid=1000(system) NsdService expire 7 lines
+04-22 10:02:17.188  1743  2443 I chatty  : uid=1000(system) Binder:1743_8 expire 8 lines
+04-22 10:07:49.627  1743  1778 I chatty  : uid=1000(system) batterystats-wo expire 1 line
+04-22 10:09:24.049  1743  2059 I chatty  : uid=1000(system) UEventObserver expire 4 lines
+04-22 10:10:50.428  1743  3656 I chatty  : uid=1000(system) Binder:1743_E expire 1 line
+04-22 10:11:05.126  1743  1788 I chatty  : uid=1000(system) PackageManager expire 45 lines
+04-22 10:11:05.366  1743  2078 I chatty  : uid=1000(system) AccountManagerS expire 1 line
+04-22 10:11:05.382  1743  2660 I chatty  : uid=1000(system) android.fg expire 1 line
+04-22 10:11:05.384  1743  1772 I chatty  : uid=1000(system) ActivityManager expire 24 lines
+04-22 10:11:05.463  1743  2389 I chatty  : uid=1000(system) Binder:1743_7 expire 3 lines
+04-22 10:11:05.551  1743  1743 I chatty  : uid=1000 system_server expire 11 lines
+04-22 10:11:05.632  1743  1762 I chatty  : uid=1000(system) android.fg expire 2 lines
+04-22 10:11:06.004  1743  2836 I chatty  : uid=1000(system) Binder:1743_9 expire 4 lines
+04-22 10:11:06.038  1743  1773 I chatty  : uid=1000(system) ActivityManager expire 1 line
+04-22 10:11:06.039  1743  1766 I chatty  : uid=1000(system) android.anim expire 7 lines
+04-22 10:11:06.397  1743  3659 I chatty  : uid=1000(system) Binder:1743_10 expire 2 lines
+04-22 10:11:40.602  2308  2308 V DeadZone: consuming errant click: (44.937588,10.048706)
+04-22 10:11:40.602  2308  2308 V DeadZone: consuming errant click: (44.937588,10.048706)
+04-22 10:11:44.478  1743  2246 I chatty  : uid=1000(system) NsdService expire 5 lines
