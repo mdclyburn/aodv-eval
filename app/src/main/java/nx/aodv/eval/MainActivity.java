@@ -186,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
                 String name = editTextSendAddress.getText().toString();
                 short address = strToShort(name);
                 if (address != 0) {
+                    Log.d(TAG, "data collect: burst start");
                     for (int x = 0; x < 5; x++) {
                         sendMessage(address, editTextSendMessage.getText().toString());
 
@@ -195,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.e("perf", "Failed to sleep for burst send testing.");
                         }
                     }
+                    Log.d(TAG, "data collect: burst end");
                 }
             }
         });
