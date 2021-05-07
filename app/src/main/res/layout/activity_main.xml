@@ -196,24 +196,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Send burst"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="397dp" />
+        app:layout_constraintBottom_toTopOf="@+id/lastMessageRx"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buttonLoadData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="132dp"
         android:text="Load"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/routeTabletextView" />
+
+    <Button
+        android:id="@+id/sendAsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Send As"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLoadData" />
 
     <TextView
         android:id="@+id/loadedDataTextView"
         android:layout_width="197dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="168dp"
         app:layout_constraintStart_toEndOf="@+id/buttonLoadData"
         app:layout_constraintTop_toBottomOf="@+id/routeTabletextView" />
 
@@ -222,18 +231,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
+        android:layout_marginTop="168dp"
         android:text="Send"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/loadedDataTextView"
         app:layout_constraintTop_toBottomOf="@+id/routeTabletextView" />
-
-    <Button
-        android:id="@+id/sendAsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:text="Send As"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLoadData" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

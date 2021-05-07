@@ -132,20 +132,20 @@ public class MainActivity extends AppCompatActivity {
         sendMessageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                network.setIntervalsAndTimeouts(
-                        2000,
-                        3000,
-                        7000,
-                        7000,
-                        500,
-                        5000
-//                        Integer.parseInt(tvHelloInterval.getText().toString()),
-//                        Integer.parseInt(tvRouteExpiryInterval.getText().toString()),
-//                        Integer.parseInt(tvRouteTimeout.getText().toString()),
-//                        Integer.parseInt(tvQueueTimeout.getText().toString()),
-//                        Integer.parseInt(tvQueueInterval.getText().toString()),
-//                        Integer.parseInt(tvHelloInterval.getText().toString())
-                );
+//                network.setIntervalsAndTimeouts(
+//                        2000,
+//                        3000,
+//                        7000,
+//                        7000,
+//                        500,
+//                        5000
+////                        Integer.parseInt(tvHelloInterval.getText().toString()),
+////                        Integer.parseInt(tvRouteExpiryInterval.getText().toString()),
+////                        Integer.parseInt(tvRouteTimeout.getText().toString()),
+////                        Integer.parseInt(tvQueueTimeout.getText().toString()),
+////                        Integer.parseInt(tvQueueInterval.getText().toString()),
+////                        Integer.parseInt(tvHelloInterval.getText().toString())
+//                );
 
                 String name = editTextSendAddress.getText().toString();
                 short address = strToShort(name);
@@ -185,16 +185,26 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = editTextSendAddress.getText().toString();
                 short address = strToShort(name);
+                network.setIntervalsAndTimeouts(
+                        0,
+                        0,
+                        Integer.parseInt(tvRouteTimeout.getText().toString()),
+                        0,
+                        0,
+                        0
+                        );
                 if (address != 0) {
+                    Log.d(TAG, "data collect: burst start");
                     for (int x = 0; x < 10; x++) {
                         sendMessage(address, editTextSendMessage.getText().toString());
 
                         try {
-                            TimeUnit.SECONDS.sleep(1);
+                            TimeUnit.MILLISECONDS.sleep(Integer.parseInt(tvRouteExpiryInterval.getText().toString()));
                         } catch (InterruptedException interrupted) {
                             Log.e("perf", "Failed to sleep for burst send testing.");
                         }
                     }
+                    Log.d(TAG, "data collect: burst end");
                 }
             }
         });

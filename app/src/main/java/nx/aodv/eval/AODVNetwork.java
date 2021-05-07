@@ -382,12 +382,12 @@ class AODVNetwork {
             long QUEUE_TIMEOUT,
             long QUEUE_INTERVAL,
             long QUEUE_POLLING_TIMEOUT){
-        this.HELLO_INTERVAL = HELLO_INTERVAL;
-        this.ROUTE_EXPIRY_INTERVAL = ROUTE_EXPIRY_INTERVAL;
+//        this.HELLO_INTERVAL = HELLO_INTERVAL;
+//        this.ROUTE_EXPIRY_INTERVAL = ROUTE_EXPIRY_INTERVAL;
         this.ROUTE_TIMEOUT = ROUTE_TIMEOUT;
-        this.QUEUE_TIMEOUT = QUEUE_TIMEOUT;
-        this.QUEUE_INTERVAL = QUEUE_INTERVAL;
-        this.QUEUE_POLLING_TIMEOUT = QUEUE_POLLING_TIMEOUT;
+//        this.QUEUE_TIMEOUT = QUEUE_TIMEOUT;
+//        this.QUEUE_INTERVAL = QUEUE_INTERVAL;
+//        this.QUEUE_POLLING_TIMEOUT = QUEUE_POLLING_TIMEOUT;
     }
 
     public int getLocalSize() {
@@ -461,6 +461,7 @@ class AODVNetwork {
 
     private synchronized void sendCCMessage(AODVMessage msg) {
         try {
+            Log.d(TAG, "Data collect: SEND");
             byte[] bytes = SerializationHelper.serialize(msg);
             Payload payload = Payload.fromBytes(bytes);
             totalTx += bytes.length;
@@ -528,6 +529,7 @@ class AODVNetwork {
     }
 
     private void handleHELLO(AODVMessage msg) {
+        Log.v(TAG, "Data collect: HELO");
         short sendAddr = msg.header.sendAddr;
         String sendId = msg.header.sendId;
         AODVRoute neighbor;
@@ -569,11 +571,14 @@ class AODVNetwork {
     }
 
     private void handleDATA(AODVMessage msg) {
+        Log.v(TAG, "Data collect: DATA");
+        long startTime = System.currentTimeMillis();
         short destAddr = msg.header.destAddr;
         if (destAddr == self.address) {
             //do whatever with data, in our case post it to the text view
-            updateLastMessageRx(msg.header.srcAddr, msg.payload);
+//            updateLastMessageRx(msg.header.srcAddr, msg.payload);
         } else {
+            Log.v(TAG, "Data collect: intermediary hop");
             AODVRoute route = getRouteByAddress(destAddr);
             if (route != null) {
                 msg.header.nextId = route.nextHopId;
@@ -590,9 +595,13 @@ class AODVNetwork {
                 }
             }
         }
+        long stopTime = System.currentTimeMillis();
+        long elapsedMS = stopTime - startTime;
+        Log.v(TAG, "Data collect: handle data elapsed MS: " + elapsedMS);
     }
 
     private void handleRREQ(AODVMessage msg) {
+        Log.v(TAG, "Data collect: RREQ");
         short srcAddr = msg.header.srcAddr;
         short destAddr = msg.header.destAddr;
         if (srcAddr == self.address) {
@@ -610,7 +619,7 @@ class AODVNetwork {
             srcRoute.hopCnt = (byte) (msg.header.hopCnt + 1);
             srcRoute.timeout = System.currentTimeMillis() + ROUTE_TIMEOUT;
             routeTable.put(srcAddr, srcRoute);
-            updateRouteTableDisplay();
+//            updateRouteTableDisplay();
         }
         //check bcast seq num for route freshness and to prevent loops
         if (msg.header.bcastSeqNum <= srcRoute.bcastSeqNum) {
@@ -635,6 +644,7 @@ class AODVNetwork {
     }
 
     private void handleRREP(AODVMessage msg) {
+        Log.v(TAG, "Data collect: RREP");
         short srcAddr = msg.header.srcAddr;
         short destAddr = msg.header.destAddr;
         AODVRoute srcRoute = getRouteByAddress(srcAddr);
@@ -652,7 +662,7 @@ class AODVNetwork {
             srcRoute.seqNum = msg.header.srcSeqNum;
             srcRoute.hopCnt = (byte) (msg.header.hopCnt - 1);
             routeTable.put(srcAddr, srcRoute);
-            updateRouteTableDisplay();
+//            updateRouteTableDisplay();
         }
         srcRoute.timeout = System.currentTimeMillis() + ROUTE_TIMEOUT;
         AODVRoute destRoute = getRouteByAddress(destAddr);
@@ -677,6 +687,7 @@ class AODVNetwork {
     }
 
     private void handleRERR(AODVMessage msg) {
+        Log.v(TAG, "Data collect: RERR");
         short srcAddr = msg.header.srcAddr;
         short destAddr = msg.header.destAddr;
         Log.d(TAG, "handleRERR: Received AODV RERR message from: " + srcAddr);
